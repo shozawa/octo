@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'versions/create'
+
   resources :documents, only: [:index, :show, :create]
   resources :posts, only: [:create]
+  resources :versions, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
