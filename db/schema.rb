@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213071747) do
+ActiveRecord::Schema.define(version: 20160215082822) do
 
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at",     null: false
@@ -26,7 +26,24 @@ ActiveRecord::Schema.define(version: 20160213071747) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "posts" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "posts", force: :cascade do |t|
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "board_id"
+    t.integer  "version_id"
+  end
+
+  add_index "posts", ["board_id"], name: "index_posts_on_board_id"
+  add_index "posts", ["version_id"], name: "index_posts_on_version_id"
+
+  create_table "versions", force: :cascade do |t|
+    t.integer  "version_no"
+    t.integer  "document_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "versions", ["document_id"], name: "index_versions_on_document_id"
 
 end

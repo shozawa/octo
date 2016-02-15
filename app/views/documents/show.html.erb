@@ -1,0 +1,13 @@
+<h1><%= @document.name %></h1>
+<%= link_to "ドキュメント一覧へ戻る", documents_path %>
+
+<%= form_for Post.new do |f| %>
+  <%= hidden_field_tag :document_id, @document.id %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= content_tag :p, post.content, class: ["version-no-#{post.version.version_no}"] %>
+<% end %>
