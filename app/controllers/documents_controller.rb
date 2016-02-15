@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find(params[:id])
+    @versions = @document.versions
     @posts = @document.posts
   end
 

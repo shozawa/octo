@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     document = Document.find_by(id: params[:document_id])
-    post.version = document.versions.find_by(version_no: post.ex_version)
+    version = document.versions.find_by(version_no: post.ex_version) ||
+      document.versions.first
+    post.version = version
     if post.save
       redirect_to document
     else

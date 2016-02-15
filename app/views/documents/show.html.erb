@@ -8,6 +8,9 @@
   <%= f.submit %>
 <% end %>
 
-<% @posts.each do |post| %>
-  <%= content_tag :p, post.content, class: ["version-no-#{post.version.version_no}"] %>
+<% @versions.each do |version| %>
+  <%= content_tag :h2, "VERSION #{version.version_no}" %>
+  <% version.posts.each do |post| %>
+    <p><%= content_tag(:span, "VERSION #{post.version.version_no}", class: "tag is-success") %><%= post.clean_content %></p>
+  <% end %>
 <% end %>
