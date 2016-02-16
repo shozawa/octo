@@ -1,0 +1,12 @@
+<%= form_for [@project, @document] do |f| %>
+  <%= f.label :name, "ファイル名" %>
+  <%= f.text_field :name %>
+  <%= hidden_field_tag :project_id, @project.id %>
+  <%= f.submit "アップロード" %>
+<% end %>
+
+<ul>
+  <% @documents.each do |document| %>
+    <p><%= link_to document.name, polymorphic_path(document) %></p>
+  <% end %>
+</ul>

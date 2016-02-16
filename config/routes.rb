@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'welcome/index'
   get 'users/new'
   get 'signup'  => 'users#new'
@@ -6,6 +7,20 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
+
+  get 'projects/show'
+  get 'projects/new'
+
+  resources :projects, only: [:index, :show, :create] do
+    resources :documents, only: [:index, :show, :create], shallow: true
+  end
+
+  get 'versions/create'
+
+  resources :posts, only: [:create]
+  resources :versions, only: [:create]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

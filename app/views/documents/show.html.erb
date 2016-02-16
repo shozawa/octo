@@ -1,0 +1,22 @@
+<h1><%= @document.name %></h1>
+<%= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project) %>
+
+<%= form_for Post.new do |f| %>
+  <%= hidden_field_tag :document_id, @document.id %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+<%= form_for @document.versions.build do |f| %>
+  <%= hidden_field_tag :document_id, @document.id %>
+  <%= f.submit "新規バージョンを投稿" %>
+<% end %>
+
+<% @versions.each do |version| %>
+  <% next unless version.persisted? %>
+  <%= content_tag :h2, "VERSION #{version.version_no}" %>
+  <% version.posts.each do |post| %>
+    <p><%= content_tag(:span, "VERSION #{post.version.version_no}", class: "tag is-success") %><%= post.clean_content %></p>
+  <% end %>
+<% end %>
