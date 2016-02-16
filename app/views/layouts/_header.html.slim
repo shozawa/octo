@@ -1,0 +1,21 @@
+section.hero.is-info.is-left.is-bold
+  .hero-header
+    header.header
+      .container
+        .header-left
+          .header-item
+            .title.is-5
+              | octo
+        .header-right.header-menu
+          //ul
+            //li = link_to "home", root_path
+            //li = link_to "help", help_path
+
+          - if logged_in?
+            p.header-item = link_to "users", '#'
+            p.header-item = link_to "Profile", current_user
+            p.header-item = link_to "Settings", '#'
+            p.header-item = link_to "Log out", logout_path, method: "delete", :class => "button is-info is-outlined is-inverted"
+
+          - else
+            p.header-item = link_to "Log in", login_path, :class => "button is-info is-outlined is-inverted"
