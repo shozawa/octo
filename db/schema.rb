@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160214105818) do
 
   create_table "users", force: :cascade do |t|
@@ -22,9 +21,6 @@ ActiveRecord::Schema.define(version: 20160214105818) do
     t.string   "password_digest"
     t.string   "remember_digest"
   end
-
-=======
-ActiveRecord::Schema.define(version: 20160215124158) do
 
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at",     null: false
@@ -68,5 +64,4 @@ ActiveRecord::Schema.define(version: 20160215124158) do
 
   add_index "versions", ["document_id"], name: "index_versions_on_document_id"
 
->>>>>>> CreateBoards
 end
