@@ -10,12 +10,14 @@
 
 <%= form_for @document.versions.build do |f| %>
   <%= hidden_field_tag :document_id, @document.id %>
+  <%= f.file_field :attachment %>
   <%= f.submit "新規バージョンを投稿" %>
 <% end %>
 
 <% @versions.each do |version| %>
   <% next unless version.persisted? %>
   <%= content_tag :h2, "VERSION #{version.version_no}" %>
+  <%= image_tag version.attachment.url(:medium) %>
   <% version.posts.each do |post| %>
     <p><%= content_tag(:span, "VERSION #{post.version.version_no}", class: "tag is-success") %><%= post.clean_content %></p>
   <% end %>

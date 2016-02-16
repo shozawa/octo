@@ -7,6 +7,8 @@
 
 <ul>
   <% @documents.each do |document| %>
-    <p><%= link_to document.name, polymorphic_path(document) %></p>
+    <li><%= link_to document.name, document_path(document) %></li>
   <% end %>
 </ul>
+
+<%= link_to "プロジェクト一覧", projects_path %>

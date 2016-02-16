@@ -1,8 +1,8 @@
 class DocumentsController < ApplicationController
   def index
     @project = Project.find_by(id: params[:project_id])
-    @document = @project.documents.build
     @documents = @project.documents
+    @document = Document.new    
   end
 
   def show

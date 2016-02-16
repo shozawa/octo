@@ -1,9 +1,12 @@
 <%= form_for @project do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit "プロジェクトを作成" %>
+  <p class="control">
+    <%= f.text_field :name, placeholder: "プロジェクトの名前" %>
+  </p>
+  <p class="control">
+    <%= f.submit "プロジェクトを作成", class: ["button", "is-success"] %>
+  </p>
 <% end %>
 
 <% @projects.each do |project| %>
-  <%= link_to project.name, project %>
+  <%= link_to project.name, project_documents_path(project), class: ["title", "is-4"] %>
 <% end %>
