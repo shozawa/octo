@@ -1,0 +1,9 @@
+<%= form_for @project do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "プロジェクトを作成" %>
+<% end %>
+
+<% @projects.each do |project| %>
+  <%= link_to project.name, project %>
+<% end %>

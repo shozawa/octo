@@ -1,5 +1,5 @@
 <h1><%= @document.name %></h1>
-<%= link_to "ドキュメント一覧へ戻る", documents_path %>
+<%= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project) %>
 
 <%= form_for Post.new do |f| %>
   <%= hidden_field_tag :document_id, @document.id %>

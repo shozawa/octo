@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  get 'projects/show'
+
+  get 'projects/new'
+
+  resources :projects, only: [:index, :show, :create] do
+    resources :documents, only: [:index, :show, :create], shallow: true
+  end
+
   get 'versions/create'
 
-  resources :documents, only: [:index, :show, :create]
+
   resources :posts, only: [:create]
   resources :versions, only: [:create]
 

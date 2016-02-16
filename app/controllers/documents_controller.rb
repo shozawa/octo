@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
   def index
-    @document = Document.new
-    @documents = Document.all
+    @project = Project.find_by(id: params[:project_id])
+    @document = @project.documents.build
+    @documents = @project.documents
   end
 
   def show
@@ -11,7 +12,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(document_params)
+    @project = Project.find_by(id: params[:project_id])
+    @document = @project.documents.build(document_params)
     if @document.save
       @document.versions.create(version_no: 0)
       redirect_to @document
@@ -24,6 +26,6 @@ class DocumentsController < ApplicationController
   private
 
     def document_params
-      params.require(:document).permit(:name)
+      params.require(:document).permit([:name])
     end
 end
