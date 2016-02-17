@@ -9,14 +9,16 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
   end
 
   def create
     @project = Project.new(project_params)
     if @project.save
+      redirect_to project_documents_path(@project)
     else
+      render 'new'
     end
-    redirect_to projects_documents_path
   end
 
   private

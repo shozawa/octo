@@ -7,6 +7,13 @@
   </p>
 <% end %>
 
-<% @projects.each do |project| %>
-  <%= link_to project.name, project_documents_path(project), class: ["title", "is-4"] %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr><th>Name</th></tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr><td><%= link_to project.name, project_documents_path(project) %></td></tr>
+    <% end %>
+  </tbody>
+</table>

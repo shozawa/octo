@@ -8,14 +8,9 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :users
 
-  get 'projects/show'
-  get 'projects/new'
-
-  resources :projects, only: [:index, :show, :create] do
-    resources :documents, only: [:index, :show, :create], shallow: true
+  resources :projects, only: [:index, :show, :create, :new] do
+    resources :documents, only: [:index, :show, :create, :new], shallow: true
   end
-
-  get 'versions/create'
 
   resources :posts, only: [:create]
   resources :versions, only: [:create]

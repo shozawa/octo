@@ -5,4 +5,5 @@ class Document < ActiveRecord::Base
   has_many :versions
   has_many :posts, through: :versions
   belongs_to :project
+  accepts_nested_attributes_for :versions
 end
