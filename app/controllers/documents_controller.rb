@@ -1,8 +1,14 @@
 class DocumentsController < ApplicationController
   def index
     @project = Project.find_by(id: params[:project_id])
-    @document = @project.documents.build
     @documents = @project.documents
+    @document = Document.new
+    @document.versions.build
+  end
+
+  def new
+    @project = Project.find_by(id: params[:project_id])
+    @document = @project.documents.build
   end
 
   def show
@@ -26,6 +32,8 @@ class DocumentsController < ApplicationController
   private
 
     def document_params
-      params.require(:document).permit([:name])
+      params.require(:document).permit(
+      :name,
+      versions_attributes: [:id, :attachment])
     end
 end

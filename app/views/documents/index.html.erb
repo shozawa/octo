@@ -1,12 +1,15 @@
-<%= form_for [@project, @document] do |f| %>
-  <%= f.label :name, "ファイル名" %>
-  <%= f.text_field :name %>
-  <%= hidden_field_tag :project_id, @project.id %>
-  <%= f.submit "アップロード" %>
-<% end %>
+<%= link_to "新しいドキュメント", new_project_document_path, class: ["button", "is-success"] %>
 
-<ul>
-  <% @documents.each do |document| %>
-    <p><%= link_to document.name, polymorphic_path(document) %></p>
-  <% end %>
-</ul>
+<table class="table">
+  <thead>
+    <tr><th>Name</th></tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr><td><%= link_to document.name, document_path(document) %></td></tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "プロジェクト一覧", projects_path %>
