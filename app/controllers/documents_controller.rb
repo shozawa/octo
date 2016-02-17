@@ -21,8 +21,7 @@ class DocumentsController < ApplicationController
   def create
     @project = Project.find_by(id: params[:project_id])
     @document = @project.documents.build(document_params)
-    if @document.save
-      @document.versions.create(version_no: 0)
+    if @document.save      
       redirect_to @document
     else
       flash[:notice] = "ドキュメントのアップロードに失敗しました。"
