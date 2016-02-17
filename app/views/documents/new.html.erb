@@ -1,4 +1,7 @@
 <%= form_for [@project, @document] do |f| %>
   <%= f.text_field :name, placeholder: "ドキュメントの名前" %>
+    <%= f.fields_for :versions do |versions_form| %>
+      <%= versions_form.file_field :attachment %>
+    <% end %>
   <%= f.submit "投稿" %>
 <% end %>

@@ -9,6 +9,7 @@ class DocumentsController < ApplicationController
   def new
     @project = Project.find_by(id: params[:project_id])
     @document = @project.documents.build
+    @document.versions.build
   end
 
   def show
