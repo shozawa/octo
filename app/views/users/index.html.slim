@@ -2,9 +2,8 @@
 
 h1 ユーザー一覧
 
+= will_paginate
+
 ul.users
-  - @users.each do |user|
-    li
-      = gravatar_for user
-      = link_to user.name, user
-  end
+  = render @users
+= will_paginate
