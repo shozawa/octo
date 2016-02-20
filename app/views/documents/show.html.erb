@@ -9,7 +9,6 @@
   <% next unless version.persisted? %>
   <%= content_tag :h2, "VERSION #{version.version_no}" %>
   <%= link_to "ダウンロード", version.attachment.url(:medium) %>
-  <%= image_tag version.attachment.url(:medium) %>
   <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
     <%= render version.posts %>
   </div>
