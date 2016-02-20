@@ -1,20 +1,18 @@
 class PostsController < ApplicationController
   def create
-    post = Post.new(post_params)
-    document = Document.find_by(id: params[:document_id])
-    version = document.versions.find_by(version_no: post.ex_version) ||
-      document.versions.first
-    post.version = version
-    if post.save
-      redirect_to document
+    @version = Version.find_by(id: params[:version_id])
+    @post = @version.posts.build(post_params)
+    if @post.save
+      respond_to do |format|
+        format.html { render text: 'html' }
+        format.js {}
+      end
     else
-      flash[:notice] = "投稿が失敗しました。"
     end
-
   end
 
   private
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit([:content])
     end
 end

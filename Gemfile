@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.2'
 gem 'bcrypt'
 gem 'paperclip'
+gem 'faker'
+gem 'will_paginate'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
