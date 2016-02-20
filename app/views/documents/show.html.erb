@@ -1,24 +1,18 @@
 <h1><%= @document.name %></h1>
 <%= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project) %>
 
-<%= form_for Post.new do |f| %>
-  <%= hidden_field_tag :document_id, @document.id %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
-<% end %>
-
-<%= form_for @document.versions.build do |f| %>
-  <%= hidden_field_tag :document_id, @document.id %>
-  <%= f.file_field :attachment %>
-  <%= f.submit "新規バージョンを投稿" %>
-<% end %>
+<div id="new_version_form">
+  <%= render partial: 'versions/form', locals: { document: @document } %>
+</div>
 
 <% @versions.each do |version| %>
   <% next unless version.persisted? %>
   <%= content_tag :h2, "VERSION #{version.version_no}" %>
-  <%= image_tag version.attachment.url(:medium) %>
-  <% version.posts.each do |post| %>
-    <p><%= content_tag(:span, "VERSION #{post.version.version_no}", class: "tag is-success") %><%= post.clean_content %></p>
-  <% end %>
+  <%= link_to "ダウンロード", version.attachment.url(:medium) %>
+  <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
+    <%= render version.posts %>
+  </div>
+  <div class="new_post_form">
+    <%= render partial: 'posts/form', locals: { post: @post, version: version } %>
+  </div>
 <% end %>
