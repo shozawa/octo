@@ -15,13 +15,13 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.find(params[:id])
     @versions = @document.versions
-    @posts = @document.posts
+    @post = Post.new
   end
 
   def create
     @project = Project.find_by(id: params[:project_id])
     @document = @project.documents.build(document_params)
-    if @document.save      
+    if @document.save
       redirect_to @document
     else
       flash[:notice] = "ドキュメントのアップロードに失敗しました。"
