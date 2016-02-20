@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
+  resources :account_activations, only: [:edit]
 
   resources :projects, only: [:index, :show, :create, :new] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
