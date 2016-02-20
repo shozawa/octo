@@ -14,7 +14,7 @@ section.hero.is-info.is-left.is-bold
           - if logged_in?
             p.header-item = link_to "users", '#'
             p.header-item = link_to "Profile", current_user
-            p.header-item = link_to "Settings", '#'
+            p.header-item = link_to "Settings", edit_user_path(current_user)
             p.header-item = link_to "Log out", logout_path, method: "delete", :class => "button is-info is-outlined is-inverted"
 
           - else
