@@ -1,23 +1,34 @@
-<h1><%= @document.name %></h1>
-<%= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project) %>
-
-<div id="new_version_form">
-  <%= render partial: 'versions/form', locals: { document: @document } %>
+<div class="header">
+  <div class="container">
+    <%= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project),  :class => 'header-item' %>
+  </div>
 </div>
 
-<% @versions.each do |version| %>
-  <% next unless version.persisted? %>
-  <div class="card">
-    <div class="content">
-      <%= content_tag :h2, "VERSION #{version.version_no}" %>
-      <%= link_to "ダウンロード", version.attachment.url(:medium) %>
-      <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
-        <%= render version.posts %>
-      </div>
-    </div>
-  </div>
+<div class="section">
+  <div class="container">
+    <h1 class="title"><%= @document.name %></h1>
 
-  <div class="new_post_form">
-    <%= render partial: 'posts/form', locals: { post: @post, version: version } %>
+    <div class="notification" id="new_version_form">
+      <%= render partial: 'versions/form', locals: { document: @document } %>
+    </div>
+
+
+    <% @versions.each do |version| %>
+      <% next unless version.persisted? %>
+
+        <div class="section">
+          <%= content_tag :h2, "VERSION #{version.version_no}", :class => 'title' %>
+          <%= link_to "ダウンロード", version.attachment.url(:medium) %>
+          <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
+            <%= render version.posts %>
+          </div>
+
+          <div class="new_post_form">
+            <%= render partial: 'posts/form', locals: { post: @post, version: version } %>
+          </div>
+        </div>
+
+    <% end %>
+
   </div>
-<% end %>
+</div>

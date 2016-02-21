@@ -1,7 +1,5 @@
-<p class="control">
-  <%= form_for post, remote: true do |f| %>
-    <%= f.text_field :content %>
+  <%= form_for post, remote: true, :html => {:class => 'control is-grouped'} do |f| %>
+    <%= f.text_field :content, :class => 'input' %>
     <%= hidden_field_tag :version_id, version.id %>
     <%= f.submit "post", class: ["button", "is-primary"] %>
   <% end %>
-</p>

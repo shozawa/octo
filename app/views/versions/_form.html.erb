@@ -1,5 +1,5 @@
-<%= form_for document.versions.build do |f| %>
+<%= form_for document.versions.build, :html => {:class => 'control is-text-centered'} do |f| %>
   <%= hidden_field_tag :document_id, document.id %>
-  <%= f.file_field :attachment %>
-  <%= f.submit "新規バージョンを投稿" %>
+  <%= f.file_field :attachment, :class => 'file-upload' %>
+  <%= f.submit "新規バージョンを投稿", :class => 'button is-info is-pulled-right' %>
 <% end %>
