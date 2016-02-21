@@ -1,6 +1,6 @@
 <p class="control">
   <%= form_for post, remote: true do |f| %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, class: "post_content" %>
     <%= hidden_field_tag :version_id, version.id %>
     <%= f.submit "post", class: ["button", "is-primary"] %>
   <% end %>
