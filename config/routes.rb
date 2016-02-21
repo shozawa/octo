@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'welcome/index'
   get 'users/new'
   get 'signup'  => 'users#new'
@@ -7,7 +6,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users
-
+  resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :projects, only: [:index, :show, :create, :new] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
   end
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:create]
   resources :versions, only: [:create]
 
+  if Rails.env.development?
+      mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
