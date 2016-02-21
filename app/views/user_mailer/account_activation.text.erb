@@ -1,0 +1,7 @@
+Octoへようこそ
+
+<%= @user.name %>さん
+
+下記のURLをブラウザで表示して、アカウント登録を完了してください。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
