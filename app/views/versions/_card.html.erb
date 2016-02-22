@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="content">
+    <%= content_tag :h2, "VERSION #{version.version_no}" %>
+    <%= link_to "ダウンロード", version.attachment.url(:medium) %>
+    <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
+      <%= render version.posts %>
+    </div>
+  </div>
+</div>
+
+<div class="new_post_form">
+  <%= render partial: 'posts/form', locals: { post: version.posts.build, version: version } %>
+</div>

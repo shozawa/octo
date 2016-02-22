@@ -21,7 +21,7 @@
     <ul>
       <% @versions.each do |version| %>
         <% next unless version.persisted? %>
-        <li><%= link_to version.updated_at, version_posts_path(version), remote: true %></li>
+        <li><%= link_to version.updated_at, version_path(version), remote: true %></li>        
       <% end %>
     </ul>
     <div id="results-posts"></div>
@@ -30,19 +30,7 @@
   <div class="column">
     <% @versions.each do |version| %>
       <% next unless version.persisted? %>
-      <div class="card">
-        <div class="content">
-          <%= content_tag :h2, "VERSION #{version.version_no}" %>
-          <%= link_to "ダウンロード", version.attachment.url(:medium) %>
-          <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
-            <%= render version.posts %>
-          </div>
-        </div>
-      </div>
-
-      <div class="new_post_form">
-        <%= render partial: 'posts/form', locals: { post: @post, version: version } %>
-      </div>
+      <%= render partial: 'versions/card', locals: { version: version } %>
     <% end %>
   </div>
 </div>

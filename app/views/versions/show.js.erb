@@ -1,0 +1,3 @@
+var content = "<%= escape_javascript(render partial: 'card', locals: { version: @version }) %>"
+console.log(content);
+$("#results-posts").html(content);

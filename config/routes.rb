@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :versions, only: [:create] do
+  resources :versions, only: [:create, :show] do
       resources :posts, only: [:create, :index], shallow: true
   end
 
