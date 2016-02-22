@@ -10,12 +10,22 @@
     <div id="left-side-nav">
       <ul>
         <% Project.all.each do |project| %>
-          <li><%= link_to project.name, project_documents_path(project) %></li>
+            <li>
+              <%= link_to project.name, project_documents_path(project) %>
+            </li>
           <% end %>
       </ul>
     </div>
   </div>
-  <div class="column"></div>
+  <div class="column">
+    <ul>
+      <% @versions.each do |version| %>
+        <% next unless version.persisted? %>
+        <li><%= link_to version.updated_at, version_posts_path(version), remote: true %></li>
+      <% end %>
+    </ul>
+    <div id="results-posts"></div>
+  </div>
 
   <div class="column">
     <% @versions.each do |version| %>

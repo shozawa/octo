@@ -11,6 +11,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    version = Version.find_by(id: params[:version_id])
+    @posts = version.posts
+    respond_to do |format|
+      format.html {}
+      format.js {}      
+    end
+  end
+
   private
     def post_params
       params.require(:post).permit([:content])
