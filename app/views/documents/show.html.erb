@@ -6,6 +6,7 @@
 </div>
 
 <div class="columns">
+  <h2>プロジェクト</h2>
   <div class="column is-quarter">
     <div id="left-side-nav">
       <ul>
@@ -18,19 +19,19 @@
     </div>
   </div>
   <div class="column">
+    <h2>ドキュメント</h2>
     <ul>
       <% @versions.each do |version| %>
         <% next unless version.persisted? %>
-        <li><%= link_to version.updated_at, version_path(version), remote: true %></li>        
+        <li><%= link_to version.updated_at, version_path(version), remote: true %></li>
       <% end %>
     </ul>
-    <div id="results-posts"></div>
   </div>
 
   <div class="column">
-    <% @versions.each do |version| %>
-      <% next unless version.persisted? %>
-      <%= render partial: 'versions/card', locals: { version: version } %>
-    <% end %>
+    <h2>コメント</h2>
+    <div id="results-posts">
+      <%= render partial: 'versions/card', locals: { version: @document.versions.first } %>
+    </div>
   </div>
 </div>

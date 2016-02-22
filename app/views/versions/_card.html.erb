@@ -1,6 +1,6 @@
 <div class="card">
   <div class="content">
-    <%= content_tag :h2, "VERSION #{version.version_no}" %>
+    <%= content_tag :h3, version.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
     <%= link_to "ダウンロード", version.attachment.url(:medium) %>
     <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
       <%= render version.posts %>
