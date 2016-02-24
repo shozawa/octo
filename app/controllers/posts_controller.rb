@@ -12,11 +12,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    version = Version.find_by(id: params[:version_id])
-    @posts = version.posts
+    @posts = Post.where("version_id = ?", params[:version_id]).paginate(page: params[:page])
     respond_to do |format|
       format.html {}
-      format.js {}      
+      format.js {}
+      format.json { render json: @posts  }
     end
   end
 
