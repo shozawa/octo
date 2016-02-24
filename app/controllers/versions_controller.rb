@@ -8,6 +8,14 @@ class VersionsController < ApplicationController
     redirect_to @document
   end
 
+  def show
+    @version = Version.find_by(id: params[:id])
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
+  end
+
   private
 
     def version_params

@@ -11,6 +11,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    @posts = Post.where("version_id = ?", params[:version_id]).paginate(page: params[:page])
+    respond_to do |format|
+      format.html {}
+      format.js {}
+      format.json { render json: @posts  }
+    end
+  end
+
   private
     def post_params
       params.require(:post).permit([:content])
