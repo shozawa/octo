@@ -1,24 +1,31 @@
 .section
-  .container
-    h1.title Log in
-    p.subtilte ログインしてください
+  .container.is-text-centered
+    h1.title Octo Login
+    h2.subtilte Version control and Communication by Chat
 
-    = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: 'control'}) do |f|
-      .control
-        = f.label :email
-        = f.email_field :email, class: 'input'
+  .section
+    .columns
+      .column.is-4.is-offset-4.is-border.is-border-radius-4
+        = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: 'control'}) do |f|
 
-      .control
-        = f.label :password
-        = f.password_field :password, autocomplete: "off", class: 'input'
+          = f.label :email
+          .control.has-icon
+            = f.email_field :email, class: 'input'
+            i.fa.fa-envelope
 
-      - if devise_mapping.rememberable?
-        .control
-          = f.label :remember_me, class: 'checkbox' do
-            = f.check_box :remember_me
-            span ログインを維持する
 
-      .control
-        = f.submit "Log in", class: 'button is-success'
+          = f.label :password
+          .control.has-icon
+            = f.password_field :password, autocomplete: "off", class: 'input'
+            i.fa.fa-lock
 
-    = render "devise/shared/links"
+          - if devise_mapping.rememberable?
+            .control
+              = f.label :remember_me, class: 'checkbox' do
+                = f.check_box :remember_me
+                span ログインを維持する
+
+          .control
+            = f.submit "Log in", class: 'button is-success'
+
+        = render "devise/shared/links"

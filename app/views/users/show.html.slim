@@ -1,12 +1,11 @@
 .section
   .container
-    h1.title User Profile
+    h1.title
+      |User Profile
+      = link_to "edit", edit_user_registration_path, class: 'button'
     p.subtilte
       = @user.name
       | のページ
-
-      p.is-pulled-right = link_to "edit", edit_user_registration_path, class: 'button'
-
 
     .section
       | アイコン、所属projectなどが出るといい
