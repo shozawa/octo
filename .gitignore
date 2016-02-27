@@ -1,5 +1,9 @@
 ### https://raw.github.com/github/gitignore/06c9fd7485411b4f961b594e7bb9672a2a326177/Rails.gitignore
 
+Gemfile.lock
+
+#　環境変数
+.env
 
 ### 添付ファイル
 public/assets/arts/*

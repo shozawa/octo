@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'dotenv' ; Dotenv.load ".env.local", ".env.#{Rails.env}"
+#ENV.update YAML.load_file('config/s3.yml')[Rails.env] rescue {}
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,7 +10,7 @@ Bundler.require(*Rails.groups)
 
 module Octo
   class Application < Rails::Application
-    config.generators.template_engine = :slim 
+    config.generators.template_engine = :slim
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
