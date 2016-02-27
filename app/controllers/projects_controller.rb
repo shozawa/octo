@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by(id: params[:project_id])
+    @projects = Project.all
+    @project = Project.find_by(params[:project_id])
   end
 
   def new

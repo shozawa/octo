@@ -5,7 +5,12 @@
   </thead>
   <tbody>
     <% @projects.each do |project| %>
-      <tr><td><%= link_to project.name, project_documents_path(project) %></td></tr>
+      <tr>
+        <td>
+          <%= link_to project.name, project_documents_path(project) %>
+          <%= link_to "| 編集", project_path(project) %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
