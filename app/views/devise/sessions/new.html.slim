@@ -1,0 +1,24 @@
+.section
+  .container
+    h1.title Log in
+    p.subtilte ログインしてください
+
+    = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: 'control'}) do |f|
+      .control
+        = f.label :email
+        = f.email_field :email, class: 'input'
+
+      .control
+        = f.label :password
+        = f.password_field :password, autocomplete: "off", class: 'input'
+
+      - if devise_mapping.rememberable?
+        .control
+          = f.label :remember_me, class: 'checkbox' do
+            = f.check_box :remember_me
+            span ログインを維持する
+
+      .control
+        = f.submit "Log in", class: 'button is-success'
+
+    = render "devise/shared/links"

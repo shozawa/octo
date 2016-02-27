@@ -1,6 +1,12 @@
-h1 Users#show
-p Find me in app/views/users/show.html.slim
+.section
+  .container
+    h1.title User Profile
+    p.subtilte
+      = @user.name
+      | のページ
 
-p
-  = @user.name
-  | です
+      p.is-pulled-right = link_to "edit", edit_user_registration_path, class: 'button'
+
+
+    .section
+      | アイコン、所属projectなどが出るといい

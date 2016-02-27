@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  resources :users
   get 'welcome/index'
+
+  devise_for :users, controllers: {
+  registrations: 'users/registrations'}
+
+  resources :users
+  
   resources :projects, only: [:index, :show, :create, :new] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
   end
