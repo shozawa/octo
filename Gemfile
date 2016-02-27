@@ -7,6 +7,9 @@ gem 'bcrypt'
 gem 'paperclip'
 gem 'faker'
 gem 'will_paginate'
+gem 'devise'
+gem 'rails_admin'
+gem 'html2slim'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

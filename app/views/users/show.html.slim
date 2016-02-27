@@ -1,7 +1,11 @@
-//= @user.name
-//= @user.email
-- provide(:title, @user.name)
+.section
+  .container
+    h1.title
+      |User Profile
+      = link_to "edit", edit_user_registration_path, class: 'button'
+    p.subtilte
+      = @user.name
+      | のページ
 
-h1
-  = gravatar_for @user
-  = @user.name
+    .section
+      | アイコン、所属projectなどが出るといい

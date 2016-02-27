@@ -1,2 +1,29 @@
-h1 Welcome#index
-p Find me in app/views/welcome/index.html.slim
+.section
+  .container
+    h1.title Welcome
+    p.subtitle Octo
+
+    - if user_signed_in?
+      .section
+        .content
+          p
+            | Logged in as
+            span.tag
+              = current_user.email
+          = link_to "Settings", edit_user_registration_path, class: 'button'
+          //= link_to "Logout", destroy_user_session_path, method: :delete, class: 'button'
+      .section
+        .content
+          h2.subtitle Project list
+          p
+            |作成済みのプロジェクトを一覧している
+            br
+            = link_to "/projects はこちら", projects_path
+          ul
+            - @projects.each do |project|
+              li = link_to project.name, project_documents_path(project)
+
+    - else
+      .section
+        = link_to "Sign up", new_user_registration_path, class: 'button'
+        = link_to "Login", new_user_session_path, class: 'button'

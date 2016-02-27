@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
+
   get 'welcome/index'
-  get 'users/new'
-  get 'signup'  => 'users#new'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+
+  devise_for :users, controllers: {
+  registrations: 'users/registrations'}
+
   resources :users
-  resources :account_activations, only: [:edit]
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  
   resources :projects, only: [:index, :show, :create, :new] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
   end
