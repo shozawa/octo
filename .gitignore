@@ -3,6 +3,7 @@
 
 ### 添付ファイル
 public/assets/arts/*
+public/uploads*
 
 *.rbc
 capybara-*.html

@@ -6,6 +6,7 @@
     p.subtilte
       = @user.name
       | のページ
+      = image_tag @user.avatar.url, width: "40px"
 
     .section
       | アイコン、所属projectなどが出るといい

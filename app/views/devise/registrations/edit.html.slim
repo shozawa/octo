@@ -20,6 +20,10 @@
           | Currently waiting confirmation for:
           = resource.unconfirmed_email
       .control
+        = f.label :avatar
+        br
+        = f.file_field :avatar, class: 'button'
+      .control
         = f.label :password
         i
           | (leave blank if you don't want to change it)
