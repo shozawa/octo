@@ -4,6 +4,8 @@
 $ ->
   # Configure infinite table
     $('.infinite-posts').infinitePages
+      context: ".posts"
+      debug: true
       loading: ->
         $(this).attr({href : $("a[rel=next]").attr("href")})
         $(this).text('Loading next page...')

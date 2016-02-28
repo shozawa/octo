@@ -10,6 +10,7 @@ class VersionsController < ApplicationController
 
   def show
     @version = Version.find_by(id: params[:id])
+    @posts = Post.where("version_id=?", @version.id)
     respond_to do |format|
       format.html {}
       format.js {}

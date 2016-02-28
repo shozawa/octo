@@ -1,2 +1,7 @@
-var content = "<%= escape_javascript(render partial: 'card', locals: { version: @version }) %>"
-$("#results-posts").html(content);
+var posts = "<%= escape_javascript(render @posts ) %>";
+var next_link = '<%= escape_javascript(link_to 'next', "/versions/#{@version.id}/posts?page=2", remote: true, rel: "next") %>';
+var form = '<%= escape_javascript(render partial: "posts/form", locals: { post: @version.posts.build, version: @version }) %>'
+console.log(form);
+$(".posts").html(posts);
+$(".pagination").html(next_link);
+$(".new_post_form").html(form);
