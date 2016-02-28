@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def index
+    @user = User.find(current_user)
     @projects = Project.all
     @project = Project.new
   end
@@ -23,7 +24,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
     def project_params
       params.require(:project).permit(:name)
     end

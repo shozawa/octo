@@ -20,7 +20,7 @@
             br
             = link_to "/projects はこちら", projects_path
           ul
-            - @projects.each do |project|
+            - @user.projects.each do |project|
               li = link_to project.name, project_documents_path(project)
 
     - else

@@ -1,0 +1,12 @@
+| project_users index
+
+p = @user.name
+
+- @user.projects.each do |project|
+  p = project.name
+
+
+/ = form_for(@member) do |f|
+/   .control
+/     = f.text_area :user_id
+/     = f.submit "追加", class: 'button'

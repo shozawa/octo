@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'welcome/index'
 
   devise_for :users, controllers: {
@@ -14,6 +13,8 @@ Rails.application.routes.draw do
   resources :versions, only: [:create, :show] do
       resources :posts, only: [:create, :index], shallow: true
   end
+
+  resources :project_users, only: [:index, :create, :destroy]
 
   if Rails.env.development?
       mount LetterOpenerWeb::Engine, at: "/letter_opener"

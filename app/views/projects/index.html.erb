@@ -4,7 +4,7 @@
     <tr><th>Name</th></tr>
   </thead>
   <tbody>
-    <% @projects.each do |project| %>
+    <% @user.projects.each do |project| %>
       <tr>
         <td>
           <%= link_to project.name, project_documents_path(project) %>
