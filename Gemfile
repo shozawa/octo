@@ -6,7 +6,7 @@ gem 'rails', '4.2.2'
 gem 'bcrypt'
 gem 'paperclip'
 gem 'faker'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'jquery-infinite-pages'
 
 # Use SCSS for stylesheets

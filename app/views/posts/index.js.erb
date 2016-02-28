@@ -1,4 +1,6 @@
 var posts = "<%= escape_javascript( render @posts ) %>";
 $(".infinite-posts .posts").append(posts);
-var next_post = "<%= escape_javascript(link_to_next_page remote: true) %>";
+var next_post = "<%= escape_javascript(link_to_next_posts) %>";
+console.log(next_post);
+console.log("<%= request.url %>");
 $(".infinite-posts .pagination").html(next_post);

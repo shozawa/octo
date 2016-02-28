@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   # Configure infinite table
-  $('.infinite-posts').infinitePages
-    debug: true
-    loading: ->
-      $(this).text('Loading next page...')
-    error: ->
-      $(this).text("Trouble! Please drink some coconut water and click again")
+    $('.infinite-posts').infinitePages
+      loading: ->
+        $(this).attr({href : $("a[rel=next]").attr("href")})
+        $(this).text('Loading next page...')
+      error: ->
+        $(this).text("Trouble! Please drink some coconut water and click again")
