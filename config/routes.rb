@@ -8,13 +8,14 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :show, :create, :new] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
+    resources :project_users
   end
 
   resources :versions, only: [:create, :show] do
       resources :posts, only: [:create, :index], shallow: true
   end
 
-  resources :project_users, only: [:index, :create, :destroy]
+  resources :project_users
 
   if Rails.env.development?
       mount LetterOpenerWeb::Engine, at: "/letter_opener"

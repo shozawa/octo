@@ -21,7 +21,7 @@
             = link_to "/projects はこちら", projects_path
           ul
             - @user.projects.each do |project|
-              li = link_to project.name, project_documents_path(project)
+              li = link_to project.name, project_path(project)
 
     - else
       .section

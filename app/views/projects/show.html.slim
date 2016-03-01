@@ -1,8 +1,10 @@
 .section
   .container
-    h1.title Projects
+    h1.title
+      | Projects
+      = @project.name
     h2.subtitle
       | project ifomation
 
-
-    = link_to "project一覧",  projects_path
+    = link_to "｜プロジェクトメンバー",  project_project_users_path(@project.id)
+    = link_to "｜project一覧に戻る",  projects_path
