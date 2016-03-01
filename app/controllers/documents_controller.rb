@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :is_member?
+  before_action :is_member?, only:[:index]
   def index
     @project = Project.find_by(id: params[:project_id])
     @documents = @project.documents
@@ -40,6 +40,7 @@ class DocumentsController < ApplicationController
 
     def is_member?
       user = User.find(current_user)
+      logger.debug(user)
       my_project_ids = user.project_users.pluck(:project_id)
       current_project_id = params[:project_id].to_i
       unless my_project_ids.include?(current_project_id)

@@ -23,6 +23,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    Project.find_by(params[:id]).destroy
+    redirect_to projects_path
+    flash[:notice] = "削除しました"
+  end
+
   private
     def project_params
       params.require(:project).permit(:name)

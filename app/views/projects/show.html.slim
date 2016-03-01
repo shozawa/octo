@@ -6,5 +6,7 @@
     h2.subtitle
       | project ifomation
 
+    = link_to "ドキュメント一覧", project_documents_path(@project.id)
     = link_to "｜プロジェクトメンバー",  project_project_users_path(@project.id)
     = link_to "｜project一覧に戻る",  projects_path
+    = link_to "プロジェクト削除", project_path, method: "DELETE"
