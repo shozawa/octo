@@ -7,6 +7,8 @@
         span.name
           = project_user.user.name
           = project_user.user.id
-        = link_to "削除", "/projects/#{project_id}/project_users/#{user_id}", method: 'delete', class: 'button is-danger is-outlined'
+        = link_to "削除", "/projects/#{project_id}/project_users/#{user_id}",
+          method: 'delete',
+          class: 'button is-danger is-outlined is-pulled-right'
   - else
     p メンバーがいません。

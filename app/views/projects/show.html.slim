@@ -2,13 +2,27 @@
   .container
     = link_to "project一覧に戻る",  projects_path
     h1.title
-      | Project:
+      | ProjectName:
       = @project.name
     h2.subtitle
       | project ifomation
 
-    .tabs.is-boxed
+    .section
+      h2.title Documents
+      div
+        = link_to "ドキュメント一覧へ", project_documents_path(@project.id)
+
+    .section
+      h2.title Members
+      = link_to "メンバー編集",  project_project_users_path(@project.id)
+
       ul
-        li = link_to "ドキュメント一覧", project_documents_path(@project.id)
-        li = link_to "プロジェクトメンバー",  project_project_users_path(@project.id)
-        li = link_to "プロジェクト削除", project_path, method: "DELETE", :data => {confirm: "本当にいいですか？"}
+      - @project_users.each do |project_user|
+        li = project_user.user.name
+
+    .section
+      div
+        = link_to "プロジェクト削除",
+          project_path, method: "DELETE",
+          :data => {confirm: "本当にいいですか？"},
+          class: 'button is-danger'

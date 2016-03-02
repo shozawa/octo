@@ -1,4 +1,14 @@
 .section
   .container
-    = link_to 'メンバー追加', new_project_project_user_path
+
+    = link_to "戻る", project_path(params[:project_id])
+
+    h1.title MemberList/Edit
+    h2.subtitle メンバーを追加したり、削除したりします
+
+    a.button.is-primary[href=new_project_project_user_path]
+      i.fa.fa-plus
+      | メンバー追加
+
+
     = render 'reject'
