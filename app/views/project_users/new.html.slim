@@ -1,7 +1,13 @@
+.header
+  .container
+    a[href=project_project_users_path]
+      i.fa.fa-angle-left
+      | メンバー一覧に戻る
+
 .section
   .container
-    / p = @user.name
-    /
-    / - @user.projects.each do |project|
-    /   p = project.name
-= render 'add'
+    p
+      = @project.name
+      |へ追加します。
+    p 追加するユーザーのIDを入力してください（本当はメールにする）
+    = render 'add'

@@ -1,6 +1,6 @@
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@octo.org"
   password = "password"
   User.create!(name:  name,
                email: email,
@@ -21,5 +21,5 @@ end
 
 10.times do |n|
   ProjectUser.create!(project_id: "2",
-                      user_id: "#{n+1}")
+                      user_id: "#{n+5}")
 end

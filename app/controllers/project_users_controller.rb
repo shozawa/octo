@@ -3,11 +3,11 @@ class ProjectUsersController < ApplicationController
   def index
     @user = User.find(current_user)
     @users = User.all
-    @project_users =ProjectUser.all
+    @project_users = ProjectUser.where(project_id: params[:project_id])
   end
 
   def new
-    @id = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
     @project_user = ProjectUser.new
   end
 

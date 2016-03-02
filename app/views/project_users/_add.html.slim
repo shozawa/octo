@@ -1,6 +1,6 @@
-- project_id = @id.id
+- project_id = @project.id
 = form_for(@project_user) do |f|
-  //= f.text_field :project_id
   = f.hidden_field :project_id, :value => project_id
-  = f.text_field :user_id
-  = f.submit "追加", class: "button"
+  .control.is-grouped
+    = f.text_field :user_id, class: 'input'
+    = f.submit "追加", class: 'button is-primary'
