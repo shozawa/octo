@@ -1,5 +1,5 @@
 class ProjectUsersController < ApplicationController
-
+  before_action :is_member?, only: [:index, :new, :create, :destroy]
   def index
     @user = User.find(current_user)
     @users = User.all
@@ -32,5 +32,15 @@ class ProjectUsersController < ApplicationController
   private
     def project_user_params
       params.require(:project_user).permit(:project_id, :user_id)
+    end
+
+    def is_member?
+      user = User.find(current_user)
+      logger.debug(user)
+      my_project_ids = user.project_users.pluck(:project_id)
+      current_project_id = params[:project_id].to_i
+      unless my_project_ids.include?(current_project_id)
+        redirect_to projects_path
+      end
     end
 end
