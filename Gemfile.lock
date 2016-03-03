@@ -38,6 +38,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
+      rake (~> 10.4)
     arel (6.0.3)
     bcrypt (3.1.10)
     better_errors (2.1.1)
@@ -368,6 +371,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   bcrypt
   better_errors
   byebug

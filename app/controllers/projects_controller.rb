@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :is_member?, only: [:show, :new, :create, :destroy]
+  before_action :is_member?, only: [:show]
   def index
     @user = User.find(current_user)
     @projects = Project.all
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    Project.find_by(params[:id]).destroy
+    Project.find(params[:id]).destroy
     redirect_to projects_path
     flash[:notice] = "削除しました"
   end
@@ -39,6 +39,7 @@ class ProjectsController < ApplicationController
       user = User.find(current_user)
       logger.debug(user)
       my_project_ids = user.project_users.pluck(:project_id)
+      logger.debug(my_project_ids)
       current_project_id = params[:id].to_i
       unless my_project_ids.include?(current_project_id)
         redirect_to projects_path

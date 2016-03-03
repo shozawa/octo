@@ -13,6 +13,7 @@ gem 'html2slim'
 gem 'carrierwave'
 gem 'fog'
 gem 'dotenv-rails'
+gem 'annotate'
 
 #コンソール
 gem 'hirb'

@@ -1,5 +1,5 @@
 class ProjectUsersController < ApplicationController
-  before_action :is_member?, only: [:index, :new, :create, :destroy]
+  before_action :is_member?, only: [:index, :destroy]
   def index
     @user = User.find(current_user)
     @users = User.all
