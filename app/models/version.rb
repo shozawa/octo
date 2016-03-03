@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: versions
+#
+#  id                      :integer          not null, primary key
+#  version_no              :integer
+#  document_id             :integer
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  attachment_file_name    :string
+#  attachment_content_type :string
+#  attachment_file_size    :integer
+#  attachment_updated_at   :datetime
+#
+# Indexes
+#
+#  index_versions_on_document_id  (document_id)
+#
+
 class Version < ActiveRecord::Base
   belongs_to :document
   has_many :posts

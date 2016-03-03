@@ -18,9 +18,15 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
+      @created_project = Project.last
+      p_id = @created_project.id
+      u_id = @created_project.owner_id
+      ProjectUser.create(project_id: p_id, user_id: u_id)
       redirect_to project_documents_path(@project)
+      flash[:notice] = "プロジェクト「#{@created_project.name}」を作成しました"
     else
       render 'new'
+      flash[:notice] = "失敗したました"
     end
   end
 
@@ -32,7 +38,7 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, :owner_id)
     end
 
     def is_member?

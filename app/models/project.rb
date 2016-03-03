@@ -1,7 +1,19 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  owner_id   :integer
+#
+
 class Project < ActiveRecord::Base
   has_many :documents
-  has_many :project_users, dependent: :destroy
+  has_many :project_users, :dependent => :delete_all
   has_many :users, :through => :project_users
+  accepts_nested_attributes_for :project_users
 
   #プロジェクトに追加
   def memberAdd(selected_user)

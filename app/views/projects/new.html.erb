@@ -2,6 +2,9 @@
   <p class="control">
     <%= f.text_field :name, placeholder: "Project Name" %>
   </p>
+
+  <%= f.hidden_field :owner_id, :value => current_user.id %>
+
   <p class="controle">
     <%= f.submit "submit", class: ["button", "is-primary"] %>
   </p>
