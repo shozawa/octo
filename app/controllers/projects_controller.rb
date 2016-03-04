@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :is_member?, only: [:show]
+  before_action :is_member?, only: [:show, :destroy]
   def index
     @user = User.find(current_user)
     @projects = Project.all
@@ -16,14 +16,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      @created_project = Project.last
-      p_id = @created_project.id
-      u_id = @created_project.owner_id
-      ProjectUser.create(project_id: p_id, user_id: u_id)
+    @project = Project.create!(project_params)
+    user_id = current_user.id
+    @project_user = ProjectUser.new(project_id: @project.id, user_id: user_id)
+    if @project_user.save
       redirect_to project_documents_path(@project)
-      flash[:notice] = "プロジェクト「#{@created_project.name}」を作成しました"
+      flash[:notice] = "プロジェクト「#{@project.name}」を作成しました"
     else
       render 'new'
       flash[:notice] = "失敗したました"
@@ -38,7 +36,7 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:name, :owner_id)
+      params.require(:project).permit(:name)
     end
 
     def is_member?
