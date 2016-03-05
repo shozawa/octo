@@ -54,7 +54,6 @@ class ProjectUsersController < ApplicationController
     def is_member?
       id = current_user.id
       user = User.find(id)
-      logger.debug(user)
       my_project_ids = user.project_users.pluck(:project_id)
       current_project_id = params[:project_id].to_i
       unless my_project_ids.include?(current_project_id)

@@ -40,10 +40,9 @@ class ProjectsController < ApplicationController
     end
 
     def is_member?
-      user = User.find(current_user)
-      logger.debug(user)
+      id = current_user.id
+      user = User.find(id)
       my_project_ids = user.project_users.pluck(:project_id)
-      logger.debug(my_project_ids)
       current_project_id = params[:id].to_i
       unless my_project_ids.include?(current_project_id)
         redirect_to projects_path
