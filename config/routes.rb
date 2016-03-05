@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :project_users
   end
 
+  resources :projects, only: [:edit, :update]
+
   resources :versions, only: [:create, :show] do
       resources :posts, only: [:create, :index], shallow: true
   end

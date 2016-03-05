@@ -15,6 +15,10 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
   def create
     @project = Project.create!(project_params)
     user_id = current_user.id
@@ -25,6 +29,17 @@ class ProjectsController < ApplicationController
     else
       render 'new'
       flash[:notice] = "失敗したました"
+    end
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      flash[:notice] = "更新しました"
+      redirect_to @project
+    else
+      flash[:notice] = "失敗しました"
+      render 'edit'
     end
   end
 

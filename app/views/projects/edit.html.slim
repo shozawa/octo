@@ -1,0 +1,12 @@
+.section
+  .container
+
+    h2.title プロジェクト編集
+    p.subtitle 名前を変更できる
+
+    = form_for @project do |f|
+      .control
+        = f.label :name, "プロジェクト名"
+        = f.text_field :name, class: 'input'
+
+      = f.submit "更新", class: 'button is-primary'

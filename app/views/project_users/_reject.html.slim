@@ -6,7 +6,11 @@
       p.user_row
         span.name
           = project_user.user.name
+          | ・
           = project_user.user.id
+          | ・
+          = project_user.user.email
+          
         = link_to "削除", "/projects/#{project_id}/project_users/#{user_id}",
           method: 'delete',
           class: 'button is-danger is-outlined is-pulled-right'
