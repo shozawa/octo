@@ -22,17 +22,17 @@ class ProjectUsersController < ApplicationController
       project_id = params[:project_id]
       @project_user = ProjectUser.new(project_id: project_id, user_id: id)
       if @project_user.save
-        flash[:notice] = "メンバーに追加しました！"
+        flash[:success] = "メンバーに追加しました！"
         redirect_to project_project_users_path(project_id)
       else
-        flash[:notice] = "失敗しました.すでにメンバーに含まれている可能性があります。"
+        flash[:warning] = "失敗しました.すでにメンバーに含まれている可能性があります。"
         redirect_to project_project_users_path(params[:project_id])
       end
 
     #ユーザーがいない場合
     else
       #今後の実装でユーザー招待をする
-      flash[:notice] = "指定したユーザーは登録されていません。"
+      flash[:warning] = "指定したユーザーは登録されていません。"
       redirect_to project_project_users_path(params[:project_id])
     end
   end
@@ -43,7 +43,7 @@ class ProjectUsersController < ApplicationController
     id = @project_user.pluck(:id)
     @project_user.destroy(id)
     redirect_to project_project_users_path
-    flash[:notice] = "削除しました"
+    flash[:alert] = "削除しました"
   end
 
   private

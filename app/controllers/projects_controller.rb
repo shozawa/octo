@@ -25,20 +25,20 @@ class ProjectsController < ApplicationController
     @project_user = ProjectUser.new(project_id: @project.id, user_id: user_id)
     if @project_user.save
       redirect_to project_documents_path(@project)
-      flash[:notice] = "プロジェクト「#{@project.name}」を作成しました"
+      flash[:success] = "プロジェクト「#{@project.name}」を作成しました"
     else
       render 'new'
-      flash[:notice] = "失敗したました"
+      flash[:warning] = "失敗したました"
     end
   end
 
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      flash[:notice] = "更新しました"
+      flash[:success] = "更新しました"
       redirect_to @project
     else
-      flash[:notice] = "失敗しました"
+      flash[:warning] = "失敗しました"
       render 'edit'
     end
   end
@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
   def destroy
     Project.find(params[:id]).destroy
     redirect_to projects_path
-    flash[:notice] = "削除しました"
+    flash[:alert] = "削除しました"
   end
 
   private
