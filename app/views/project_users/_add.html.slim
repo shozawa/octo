@@ -1,6 +1,13 @@
 - project_id = @project.id
-= form_for(@project_user) do |f|
-  = f.hidden_field :project_id, :value => project_id
+/ = form_for(@project_user) do |f|
+/   = f.hidden_field :project_id, :value => project_id
+/   .control.is-grouped
+/     = f.text_field :user_id, class: 'input'
+/     = f.submit "追加", class: 'button is-primary'
+
+
+= form_tag project_project_users_path, method: 'post' do
+
   .control.is-grouped
-    = f.text_field :user_id, class: 'input'
-    = f.submit "追加", class: 'button is-primary'
+    = email_field_tag :email
+    = submit_tag "追加", class: 'button is-primary'

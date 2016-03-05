@@ -10,8 +10,9 @@
 #
 # Indexes
 #
-#  index_project_users_on_project_id  (project_id)
-#  index_project_users_on_user_id     (user_id)
+#  index_project_users_on_project_id              (project_id)
+#  index_project_users_on_project_id_and_user_id  (project_id,user_id) UNIQUE
+#  index_project_users_on_user_id                 (user_id)
 #
 
 class ProjectUser < ActiveRecord::Base
@@ -19,6 +20,7 @@ class ProjectUser < ActiveRecord::Base
   belongs_to :user
   validates :user_id, presence: true
   validates :project_id, presence: true
+  validates :user_id, uniqueness: { scope: [:project_id] }
 
   #選択候補のユーザー
   def selectable_users
