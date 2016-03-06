@@ -1,6 +1,10 @@
-var posts = "<%= escape_javascript( render @posts ) %>";
-$(".infinite-posts .posts").append(posts);
-var next_post = "<%= escape_javascript(link_to_next_posts) %>";
-console.log(next_post);
-console.log("<%= request.url %>");
-$(".infinite-posts .pagination").html(next_post);
+var posts = "<%= escape_javascript( render @posts.reverse ) %>";
+$(".infinite-posts .posts").prepend(posts);
+
+<% if !@posts.last_page? %>
+  var pagination = "<%= escape_javascript(link_to_next_page @posts, 'Loading...', remote:true) %>";
+<% else %>
+  var pagination = "<p>-- 最初の投稿です --</p>"
+<% end %>
+
+$(".infinite-posts .pagination").html(pagination);

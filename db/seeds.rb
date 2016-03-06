@@ -17,3 +17,5 @@ User.create!(name:  "Example User",
                activated: true,
                activated_at: Time.zone.now)
 end
+
+Project.create(name: "最初のプロジェクト")

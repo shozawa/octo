@@ -14,4 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require jquery.infinite-pages
+//= require jquery-reverse-infinite-scroll
