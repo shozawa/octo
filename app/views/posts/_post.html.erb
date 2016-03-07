@@ -1,1 +1,4 @@
-<p class="comment"><%= post.content %></p>
+<div class="comment" id=<%= "post-id-#{post.id}" %>>
+  <p><%= post.content %></p>
+  <%= link_to '[edit]', edit_post_path(post), class: "edit", remote: true %>
+</div>

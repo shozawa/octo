@@ -1,0 +1,3 @@
+var form = "<%= escape_javascript(render partial: 'edit_form', locals: { post: @post }) %>"
+var postId = '<%= "#post-id-#{@post.id}" %>'
+$(postId).html(form);
