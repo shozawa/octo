@@ -1,9 +1,17 @@
 <div class="card">
+  <p>あｆｓｄｓｌｄｆじゃｌｓ</p>
   <div class="content">
     <%= content_tag :h3, version.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
     <%= link_to "ダウンロード", version.attachment.url(:medium) %>
-    <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
-      <%= render version.posts %>
+    <div class="infinite-posts">
+      <div class="pagination">
+        <% if posts.size < 10 %>
+          <%= link_to 'Loading...', version_posts_path(version), remote: true, rel: "next" %>
+        <% end %>
+      </div>
+      <div class="posts" id="<%= "posts_for_version_#{version.id}" %>">
+        <%= render posts.reverse %>
+      </div>
     </div>
   </div>
 </div>

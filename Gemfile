@@ -6,7 +6,6 @@ gem 'rails', '4.2.2'
 gem 'bcrypt'
 gem 'paperclip'
 gem 'faker'
-gem 'will_paginate'
 gem 'devise'
 gem 'rails_admin'
 gem 'html2slim'
@@ -14,11 +13,11 @@ gem 'carrierwave'
 gem 'fog'
 gem 'dotenv-rails'
 gem 'annotate'
+gem 'kaminari'
 
 #コンソール
 gem 'hirb'
 gem 'hirb-unicode'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

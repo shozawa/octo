@@ -23,3 +23,5 @@ end
   ProjectUser.create!(project_id: "2",
                       user_id: "#{n+5}")
 end
+
+Project.create(name: "最初のプロジェクト")
