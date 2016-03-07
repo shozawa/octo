@@ -31,7 +31,7 @@
   <div class="column">
     <h2>コメント</h2>
     <div id="results-posts">
-      <%= render partial: 'versions/card', locals: { version: @document.versions.first } %>
+      <%= render partial: 'versions/card', locals: { version: @document.versions.first, posts: @document.posts.page(1) } %>
     </div>
   </div>
 </div>

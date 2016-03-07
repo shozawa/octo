@@ -1,7 +1,7 @@
 var post = "<%= escape_javascript(content_tag :p, @post.content) %>";
 var version_id = <%= @post.version_id %>;
-console.log(version_id);
-$(post).appendTo("#posts_for_version_" + version_id);
+console.log("success!");
+$(post).appendTo(".posts");
 $(".post_content").each(function(i,e) {
   $(e).val('');
 });
