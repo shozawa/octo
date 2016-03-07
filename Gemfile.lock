@@ -390,6 +390,7 @@ DEPENDENCIES
   html2slim
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   letter_opener_web
   paperclip
   pg
