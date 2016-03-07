@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 
   resources :versions, only: [:create, :show] do
-      resources :posts, only: [:create, :index], shallow: true
+      resources :posts, only: [:create, :index, :update, :edit], shallow: true
   end
 
   if Rails.env.development?

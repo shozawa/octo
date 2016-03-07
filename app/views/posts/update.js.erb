@@ -1,0 +1,4 @@
+console.log("aaa");
+var postId = '<%= "#post-id-#{@post.id}" %>';
+var inner = '<%= escape_javascript(render partial: "post_inner", locals: { post: @post }) %>';
+$(postId).html(inner);
