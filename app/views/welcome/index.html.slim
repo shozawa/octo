@@ -14,14 +14,14 @@
           //= link_to "Logout", destroy_user_session_path, method: :delete, class: 'button'
       .section
         .content
-          h2.subtitle Project list
+          h2.subtitle My Project list
           p
             |作成済みのプロジェクトを一覧している
             br
             = link_to "/projects はこちら", projects_path
           ul
-            - @projects.each do |project|
-              li = link_to project.name, project_documents_path(project)
+            - @user.projects.each do |project|
+              li = link_to project.name, project_path(project)
 
     - else
       .section

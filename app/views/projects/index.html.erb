@@ -4,8 +4,14 @@
     <tr><th>Name</th></tr>
   </thead>
   <tbody>
-    <% @projects.each do |project| %>
-      <tr><td><%= link_to project.name, project_documents_path(project) %></td></tr>
+    <% @user.projects.each do |project| %>
+      <tr>
+        <td>
+          <%= link_to project.name, project_documents_path(project) %>
+          <%= link_to "| 閲覧", project_path(project) %>
+          <%= link_to "| 編集", edit_project_path(project) %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

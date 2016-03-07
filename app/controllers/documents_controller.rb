@@ -1,4 +1,7 @@
 class DocumentsController < ApplicationController
+  before_action :is_member?, only:[:index]
+  before_action :document_permission, only:[:show]
+
   def index
     @project = Project.find_by(id: params[:project_id])
     @documents = @project.documents
@@ -35,5 +38,29 @@ class DocumentsController < ApplicationController
       params.require(:document).permit(
       :name,
       versions_attributes: [:id, :attachment])
+    end
+
+    def is_member?
+      id = current_user.id
+      user = User.find(id)
+      my_project_ids = user.project_users.pluck(:project_id)
+      current_project_id = params[:project_id].to_i
+      unless my_project_ids.include?(current_project_id)
+        redirect_to projects_path
+      end
+    end
+
+    def document_permission
+      #ドキュメントの投稿先のプロジェクトid
+      @document = Document.find(params[:id])
+      document_project_id = @document[:project_id]
+      #ユーザーの閲覧可能プロジェクト
+      id = current_user.id
+      user = User.find(id)
+      my_project_ids = user.project_users.pluck(:project_id)
+      unless my_project_ids.include?(document_project_id)
+        flash[:notice] = "ドキュメントの閲覧権限がありません。"
+        redirect_to projects_path
+      end
     end
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'welcome/index'
 
@@ -6,15 +8,19 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'}
 
   resources :users
-  
-  resources :projects, only: [:index, :show, :create, :new] do
+
+  resources :projects, only: [:index, :show, :create, :new, :destroy] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
+    resources :project_users
   end
 
+  resources :projects, only: [:edit, :update]
 
   resources :versions, only: [:create, :show] do
       resources :posts, only: [:create, :index, :update, :edit], shallow: true
   end
+
+  resources :project_users
 
   if Rails.env.development?
       mount LetterOpenerWeb::Engine, at: "/letter_opener"

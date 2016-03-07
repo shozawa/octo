@@ -1,0 +1,38 @@
+.header
+  .container
+    .header-left
+      = link_to "プロジェクト一覧に戻る",  projects_path, class: 'header-tab'
+
+.section
+  .container
+    h1.title
+      = @project.name
+    h2.subtitle
+      | project ifomation
+
+    = link_to "プロジェクト編集", edit_project_path
+
+    .section
+      h2.title Documents
+      div
+        = link_to "ドキュメント一覧へ", project_documents_path(@project.id)
+
+    .section
+      h2.title Members
+      = link_to "メンバー編集",  project_project_users_path(@project.id), class: 'button'
+
+      ul
+      - @project_users.each do |project_user|
+        li
+          = project_user.user.name
+          | ・
+          = project_user.user.id
+          | ・
+          = project_user.user.email
+
+    .section
+      div
+        = link_to "プロジェクト削除",
+          project_path, method: "DELETE",
+          :data => {confirm: "本当にいいですか？"},
+          class: 'button is-danger'

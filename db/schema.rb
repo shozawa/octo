@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227074708) do
+ActiveRecord::Schema.define(version: 20160305141936) do
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",               default: "", null: false
+    t.string   "encrypted_password",  default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
 
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at",     null: false
@@ -39,6 +54,17 @@ ActiveRecord::Schema.define(version: 20160227074708) do
 
   add_index "posts", ["board_id"], name: "index_posts_on_board_id"
   add_index "posts", ["version_id"], name: "index_posts_on_version_id"
+
+  create_table "project_users", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_users", ["project_id", "user_id"], name: "index_project_users_on_project_id_and_user_id", unique: true
+  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id"
+  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
