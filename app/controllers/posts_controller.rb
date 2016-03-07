@@ -11,8 +11,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.js {}
+    end
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      respond_to do |format|
+        format.js {}
+      end
+    else
+    end
+  end
+
   def index
-    @posts = Post.where("version_id = ?", params[:version_id]).paginate(page: params[:page])
+    @posts = Post.where("version_id = ?", params[:version_id]).page(params[:page])
     respond_to do |format|
       format.html {}
       format.js {}

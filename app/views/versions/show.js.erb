@@ -1,3 +1,10 @@
-var content = "<%= escape_javascript(render partial: 'card', locals: { version: @version }) %>"
-$.get("/versions/1/posts");
-$("#results-posts").html(content);
+var posts = "<%= escape_javascript(render @posts ) %>";
+<% if @posts.size > 9 %>
+  var next_link = '<%= escape_javascript(link_to 'Loading...', "/versions/#{@version.id}/posts?page=2", remote: true, rel: "next") %>';
+<% else %>
+  var next_link = ''
+<% end %>
+var form = '<%= escape_javascript(render partial: "posts/form", locals: { post: @version.posts.build, version: @version }) %>'
+$(".posts").html(posts);
+$(".pagination").html(next_link);
+$(".new_post_form").html(form);
