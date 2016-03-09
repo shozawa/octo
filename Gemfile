@@ -14,7 +14,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'dotenv-rails'
 gem 'annotate'
-gem 'kaminari'
+gem 'rails-i18n'
 
 #コンソール
 gem 'hirb'

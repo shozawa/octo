@@ -15,6 +15,10 @@
 #  index_posts_on_version_id  (version_id)
 #
 
+Kaminari.configure do |config|
+  config.page_method_name = :per_page_kaminari
+end
+
 class Post < ActiveRecord::Base
   belongs_to :version
   validates :content, presence: true

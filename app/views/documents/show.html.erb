@@ -10,7 +10,7 @@
   <div class="column is-quarter">
     <div id="left-side-nav">
       <ul>
-        <% Project.all.each do |project| %>
+        <% current_user.projects do |project| %>
             <li>
               <%= link_to project.name, project_documents_path(project) %>
             </li>
@@ -23,7 +23,7 @@
     <ul>
       <% @versions.each do |version| %>
         <% next unless version.persisted? %>
-        <li><%= link_to version.updated_at, version_path(version), remote: true %></li>
+        <li><%= link_to version.updated_at, version_path(version), remote: true, class: "document-select" %></li>
       <% end %>
     </ul>
   </div>
@@ -31,7 +31,7 @@
   <div class="column">
     <h2>コメント</h2>
     <div id="results-posts">
-      <%= render partial: 'versions/card', locals: { version: @document.versions.first, posts: @document.posts.page(1) } %>
+      <%= render partial: 'versions/card', locals: { version: @document.versions.first, posts: @document.posts.per_page_kaminari(1) } %>
     </div>
   </div>
 </div>

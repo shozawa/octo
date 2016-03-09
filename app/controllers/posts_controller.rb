@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   def create
-    @version = Version.find_by(id: params[:version_id])
-    @post = @version.posts.build(post_params)
+    @post = Post.new(post_params)
     if @post.save
-      respond_to do |format|
-        format.html { render text: 'html' }
-        format.js {}
+      if @post.id
+        respond_to do |format|
+          format.html { render text: 'html' }
+          format.js {}
+        end
       end
     else
     end
@@ -15,6 +16,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     respond_to do |format|
       format.js {}
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.js {  }
     end
   end
 
@@ -29,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where("version_id = ?", params[:version_id]).page(params[:page])
+    @posts = Post.where("version_id = ?", params[:version_id]).per_page_kaminari(params[:page])
     respond_to do |format|
       format.html {}
       format.js {}
@@ -39,6 +48,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit([:content])
+      params.require(:post).permit([:content, :version_id])
     end
 end
