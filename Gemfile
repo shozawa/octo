@@ -14,8 +14,8 @@ gem 'carrierwave'
 gem 'fog'
 gem 'dotenv-rails'
 gem 'annotate'
-gem 'kaminari'
-gem 'jquery-infinite-pages'
+gem 'rails-i18n'
+
 
 #コンソール
 gem 'hirb'

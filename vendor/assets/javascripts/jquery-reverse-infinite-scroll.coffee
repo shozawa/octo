@@ -1,9 +1,11 @@
 do ($ = jQuery) ->
   check = ->
     distance = @scrollTop()
+    nextLink = @find("[rel=next]");
+    console.log("check" + nextLink.attr("href"))
+
     if distance == 0
       scrollHeight = @[0].scrollHeight
-      nextLink = @find("[rel=next]")
       if nextLink.size() isnt 0
         $.getScript(nextLink.attr("href")).done =>
           diff = @[0].scrollHeight - scrollHeight
@@ -11,17 +13,20 @@ do ($ = jQuery) ->
 
   methods = {
     init: ->
+      console.log("初期化")
       @scrollTop(@[0].scrollHeight - @height())
       scrollHandler = (=>check.apply(@))
       scrollTimeout = null
-      # デバッグ用
-      console.log("初期化されました")
 
-      @scroll ->
+      @on 'scroll.reverse-infinite-scroll', ->
         if scrollTimeout
           clearTimeout(scrollTimeout)
           scrollTimeout = null
         scrollTimeout = setTimeout(scrollHandler, 1500)
+
+    off: ->
+      console.log("リセット")
+      @off '.reverse-infinite-scroll'
   }
 
   $.fn.reverseInfiniteScroll = (method) ->

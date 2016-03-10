@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:edit, :update]
 
   resources :versions, only: [:create, :show] do
-      resources :posts, only: [:create, :index, :update, :edit], shallow: true
+      resources :posts, only: [:create, :index, :update, :edit, :destroy], shallow: true
   end
 
   resources :project_users

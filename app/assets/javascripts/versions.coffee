@@ -3,5 +3,3 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $(".infinite-posts").reverseInfiniteScroll()
-  $("a").on 'ajax:success', ->
-    $(".infinite-posts").reverseInfiniteScroll()

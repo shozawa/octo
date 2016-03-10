@@ -10,7 +10,7 @@ class VersionsController < ApplicationController
 
   def show
     @version = Version.find_by(id: params[:id])
-    @posts = Post.where("version_id=?", @version.id).page(1)
+    @posts = Post.where("version_id=?", @version.id).per_page_kaminari(1)
     respond_to do |format|
       format.html
       format.js {}
