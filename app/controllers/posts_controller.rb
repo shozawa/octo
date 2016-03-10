@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def create
     @version = Version.find_by(id: params[:version_id])
     @post = @version.posts.build(post_params)
+    @post.user_id = current_user.id
     if @post.save
       respond_to do |format|
         format.html { render text: 'html' }

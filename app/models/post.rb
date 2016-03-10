@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #  board_id   :integer
 #  version_id :integer
+#  user_id    :integer
 #
 # Indexes
 #
@@ -17,6 +18,7 @@
 
 class Post < ActiveRecord::Base
   belongs_to :version
+  belongs_to :user
   validates :content, presence: true
   validates :version_id, presence: true
   default_scope ->{ order('created_at DESC') }

@@ -15,6 +15,7 @@ gem 'fog'
 gem 'dotenv-rails'
 gem 'annotate'
 gem 'kaminari'
+gem 'jquery-infinite-pages'
 
 #コンソール
 gem 'hirb'

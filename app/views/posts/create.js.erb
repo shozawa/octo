@@ -1,6 +1,9 @@
-var post = "<%= escape_javascript(content_tag :p, @post.content) %>";
+var post = "<%= escape_javascript(content_tag :p, @post.user.name + @post.content) %>";
+//要修正
+var avatar = "<%= escape_javascript(image_tag @post.user.avatar.url, width:30) %>";
 var version_id = <%= @post.version_id %>;
 console.log("success!");
+$(avatar).appendTo(".posts");
 $(post).appendTo(".posts");
 $(".post_content").each(function(i,e) {
   $(e).val('');
