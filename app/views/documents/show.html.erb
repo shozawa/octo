@@ -6,20 +6,20 @@
 </div>
 
 <div class="columns">
-  <h2>プロジェクト</h2>
+  <h2>ドキュメント</h2>
   <div class="column is-quarter">
     <div id="left-side-nav">
       <ul>
-        <% current_user.projects do |project| %>
+        <% @document.project.documents.each do |document| %>
             <li>
-              <%= link_to project.name, project_documents_path(project) %>
+              <%= link_to document.name, document_path(document) %>
             </li>
           <% end %>
       </ul>
     </div>
   </div>
   <div class="column">
-    <h2>ドキュメント</h2>
+    <h2>バージョン</h2>
     <ul>
       <% @versions.each do |version| %>
         <% next unless version.persisted? %>
