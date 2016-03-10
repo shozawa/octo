@@ -43,6 +43,7 @@
 class User < ActiveRecord::Base
   has_many :project_users, :dependent => :delete_all
   has_many :projects, :through => :project_users
+  has_many :posts
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,

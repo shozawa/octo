@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   def create
-    @post = Post.new(post_params)
+    @version = Version.find_by(id: params[:version_id])
+    @post = @version.posts.build(post_params)
+    @post.user_id = current_user.id
+
     if @post.save
       if @post.id
         respond_to do |format|
