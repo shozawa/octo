@@ -1,0 +1,13 @@
+= content_tag :h1, @project.name
+= link_to "新しいドキュメント", new_project_document_path, class: ["button", "is-success"]
+table.table
+  thead
+    tr
+      th
+        | Name
+  tbody
+    - @documents.each do |document|
+      tr
+        td
+          = link_to document.name, document_path(document)
+= link_to "プロジェクト一覧", projects_path

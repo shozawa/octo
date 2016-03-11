@@ -1,0 +1,9 @@
+- comment_class = ["commment"]
+- comment_class.push "myPost" if current_user.id == post.user_id
+= content_tag :div, id: "post-id-#{post.id}", class: comment_class do
+  p
+    = image_tag post.user.avatar.url, width: 30
+    = post.user.name
+    = post.content
+  = link_to '[edit]', edit_post_path(post), class: "edit", remote: true
+  = link_to '[x]', post_path(post), method: :delete, remote: true

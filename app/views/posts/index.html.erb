@@ -1,8 +1,0 @@
-<div class="infinite-posts">
-  <p class="pagination">
-    <%= link_to_next_page @posts, "Loading...", remote: true %>
-  </p>
-  <div class="posts">
-    <%= render @posts.reverse %>
-  </div>
-</div>
