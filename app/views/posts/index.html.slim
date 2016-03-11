@@ -1,0 +1,5 @@
+.infinite-posts
+  p.pagination
+    = link_to_next_page @posts, "Loading...", remote: true
+  .posts
+    = render @posts.reverse

@@ -1,0 +1,9 @@
+h1
+  | Octoへようこそ
+p
+  = @user.name
+  | さん
+p
+  |  下記のリンクをクリックして、アカウント登録を完了してください。 
+= link_to "アカウント登録", edit_account_activation_url(@user.activation_token,
+-                                                     email: @user.email)

@@ -1,0 +1,27 @@
+h1
+  = @document.name
+= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project)
+#new_version_form
+  = render partial: 'versions/form', locals: { document: @document }
+.columns
+  h2
+    | ドキュメント
+  .column.is-quarter
+    #left-side-nav
+      ul
+        - @document.project.documents.each do |document|
+          li
+            = link_to document.name, document_path(document)
+  .column
+    h2
+      | バージョン
+    ul
+      - @versions.each do |version|
+        - next unless version.persisted?
+        li
+          = link_to version.updated_at, version_path(version), remote: true, class: "document-select"
+  .column
+    h2
+      | コメント
+    #results-posts
+      = render partial: 'versions/card', locals: { version: @document.versions.first, posts: @document.posts.per_page_kaminari(1) }
