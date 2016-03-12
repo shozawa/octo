@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :show, :create, :new, :destroy] do
     resources :documents, only: [:index, :show, :create, :new], shallow: true
+    resources :documents, only: [:index] do
+      get '?page=:page', :action => :index, :on => :collection
+    end
     resources :project_users
   end
 

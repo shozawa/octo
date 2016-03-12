@@ -7,6 +7,9 @@ class DocumentsController < ApplicationController
     @documents = @project.documents
     @document = Document.new
     @document.versions.build
+
+    @q = @project.documents.ransack(params[:q])
+    @documents = @q.result.page(params[:page]).per(20)
   end
 
   def new
@@ -17,7 +20,7 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find(params[:id])
-    @versions = @document.versions    
+    @versions = @document.versions
     @post = Post.new
   end
 

@@ -1,13 +1,29 @@
-= content_tag :h1, @project.name
-= link_to "新しいドキュメント", new_project_document_path, class: ["button", "is-success"]
-table.table
-  thead
-    tr
-      th
-        | Name
-  tbody
-    - @documents.each do |document|
-      tr
-        td
-          = link_to document.name, document_path(document)
-= link_to "プロジェクト一覧", projects_path
+.section
+  .container
+    = link_to "<< プロジェクト一覧", projects_path
+    h1.title
+      = @project.name
+
+    = link_to "新しいドキュメント", new_project_document_path, class: "button is-success"
+
+    .section
+      h2.title Search
+      = render 'search'
+
+    .section
+      h2.title Documents List
+
+      .paginate.is-grouped
+        = paginate @documents
+
+      table.table.document-list
+        thead
+          tr
+            th
+              | ドキュメント名
+        tbody
+          - @documents.each do |document|
+            tr
+              td
+                i.fa.fa-file-o
+                = link_to document.name, document_path(document)
