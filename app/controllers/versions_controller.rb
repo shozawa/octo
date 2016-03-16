@@ -1,7 +1,7 @@
 class VersionsController < ApplicationController
   def create
     @document = Document.find_by(id: params[:document_id])
-    @version = @document.versions.build(version_params)
+    @version = @document.versions.build(version_params)  
     if @version.save
     else
     end
@@ -20,6 +20,6 @@ class VersionsController < ApplicationController
   private
 
     def version_params
-      params.require(:version).permit(:attachment)
+      params.require(:version).permit(:file)
     end
 end
