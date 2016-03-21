@@ -1,7 +1,7 @@
 class VersionsController < ApplicationController
   def create
     @document = Document.find_by(id: params[:document_id])
-    @version = @document.versions.build(version_params)  
+    @version = @document.versions.build(version_params)
     if @version.save
     else
     end
@@ -14,6 +14,16 @@ class VersionsController < ApplicationController
     respond_to do |format|
       format.html
       format.js {}
+    end
+  end
+
+  def download
+    version = Version.find_by(id: params[:id])
+    download_url = version.file.url
+    file_name = version.file.current_path.split("/")[-1]
+    content_type = version.file.content_type
+    open(download_url, 'rb') do |data|
+      send_data data.read, filename: file_name, type: content_type
     end
   end
 

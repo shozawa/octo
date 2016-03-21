@@ -2,7 +2,7 @@
   .content
     = content_tag :h3, version.updated_at.strftime("%Y年%m月%d日 %H時%M分")
     = image_tag version.file.url
-    = link_to "ダウンロード", version.file.url
+    = link_to "ダウンロード", "/versions/#{version.id}/download"
     .infinite-posts
       .pagination
         - if posts.size > 9
