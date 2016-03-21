@@ -15,7 +15,7 @@ gem 'fog'
 gem 'dotenv-rails'
 gem 'annotate'
 gem 'rails-i18n'
-
+gem 'ransack'
 
 #コンソール
 gem 'hirb'
