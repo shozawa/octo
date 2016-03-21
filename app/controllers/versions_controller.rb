@@ -17,9 +17,19 @@ class VersionsController < ApplicationController
     end
   end
 
+  def download
+    version = Version.find_by(id: params[:id])
+    download_url = version.file.url
+    file_name = version.file.current_path.split("/")[-1]
+    content_type = version.file.content_type
+    open(download_url, 'rb') do |data|
+      send_data data.read, filename: file_name, type: content_type
+    end
+  end
+
   private
 
     def version_params
-      params.require(:version).permit(:attachment)
+      params.require(:version).permit(:file)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309143336) do
+ActiveRecord::Schema.define(version: 20160316141640) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",               default: "", null: false
@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 20160309143336) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.string   "document"
+    t.string   "file"
   end
 
   add_index "versions", ["document_id"], name: "index_versions_on_document_id"

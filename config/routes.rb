@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
+  get '/versions/:id/download', to: 'versions#download'
   get 'welcome/index'
 
   devise_for :users, controllers: {
