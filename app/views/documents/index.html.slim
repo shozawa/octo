@@ -1,18 +1,23 @@
 .section
   .container
-    = link_to "<< プロジェクト一覧", projects_path
-    h1.title
-      = @project.name
+    = link_to "< 戻る", projects_path, class: "button is-glay"
+    .is-clearfix
+      h2.title.is-pulled-left
+        |
+        = @project.name
+        | :ドキュメント一覧
+      .is-pulled-right
+        a.button.is-primary[href=new_project_document_path]
+          .fa.fa-plus
+          | 新しいドキュメント
 
-    = link_to "新しいドキュメント", new_project_document_path, class: "button is-success"
+    div.message
+      .message-header
+        p　ドキュメント検索
+      .message-body
+        = render 'search'
 
     .section
-      h2.title Search
-      = render 'search'
-
-    .section
-      h2.title Documents List
-
       .paginate.is-grouped
         = paginate @documents
 

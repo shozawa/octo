@@ -5,32 +5,43 @@
 
 .section
   .container
-    h1.title
-      = @project.name
-    h2.subtitle
-      | project ifomation
-
-    = link_to "プロジェクト編集", edit_project_path
 
     .section
-      h2.title Documents
+      h2.title.is-pulled-left.margin-r-4px
+        = @project.name
+      a.button[href=edit_project_path]
+        .fa.fa-pencil-square-o
+        | 編集
+
+    //= link_to "プロジェクト編集", edit_project_path
+
+    .section
+      h2.title ドキュメント
       div
         = link_to "ドキュメント一覧へ", project_documents_path(@project.id)
 
     .section
-      h2.title Members
-      = link_to "メンバー編集",  project_project_users_path(@project.id), class: 'button'
+      .is-clearfix
+        h2.title.is-pulled-left.margin-r-4px メンバー一覧
+        a.button[href=project_project_users_path(@project.id)]
+          .fa.fa-users
+          | メンバー編集
 
-      ul
-      - @project_users.each do |project_user|
-        li
-          = project_user.user.name
-          | ・
-          = project_user.user.id
-          | ・
-          = project_user.user.email
+      table.table.is-bordered.is-striped
+        thead
+          th ID
+          th 名前
+          th Eメール
+        tbody
+          - @project_users.each do |project_user|
+            tr
+              td = project_user.user.id
+              td = project_user.user.name
+              td = project_user.user.email
 
     .section
+      h2.title
+        | プロジェクトの削除
       div
         = link_to "プロジェクト削除",
           project_path, method: "DELETE",

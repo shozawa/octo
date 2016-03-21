@@ -1,13 +1,24 @@
-= link_to "新しいプロジェクト", new_project_path, class: ["button", "is-success"]
-table.table
-  thead
-    tr
-      th
-        | Name
-  tbody
-    - @user.projects.each do |project|
-      tr
-        td
-          = link_to project.name, project_documents_path(project)
-          = link_to "| 閲覧", project_path(project)
-          = link_to "| 編集", edit_project_path(project)
+.section
+  .container
+    .is-pulled-right
+      a.button.is-primary[href=new_project_path]
+        .fa.fa-plus
+        | 新しいプロジェクト
+
+    h2.title プロジェクト一覧
+
+    .projects-list.is-clearfix
+      - if @user.projects.length != 0
+        - @user.projects.each do |project|
+          .card
+            /.card-image
+              / .image
+              /   img
+            .card-content
+              .cotent
+                h3.project-name
+                  = link_to project.name, project_documents_path(project)
+                = link_to "詳細", project_path(project), class: "button"
+                /= link_to "編集", edit_project_path(project), class: "button is-small"
+      - else
+        p 現在参加しているプロジェクトはありません

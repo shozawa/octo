@@ -1,18 +1,22 @@
-.user_table
-  - if @project_users != nil
-    - @project_users.each do |project_user|
-      - user_id = project_user.user_id
-      - project_id = params[:project_id]
-      p.user_row
-        span.name
-          = project_user.user.name
-          | ・
-          = project_user.user.id
-          | ・
-          = project_user.user.email
-          
-        = link_to "削除", "/projects/#{project_id}/project_users/#{user_id}",
-          method: 'delete',
-          class: 'button is-danger is-outlined is-pulled-right'
-  - else
-    p メンバーがいません。
+
+- if @project_users != nil
+  table.table.is-bordered.is-striped
+    thead
+      th ID
+      th 名前
+      th Eメール
+      th
+    tbody
+      - @project_users.each do |project_user|
+        - user_id = project_user.user_id
+        - project_id = params[:project_id]
+        tr
+          td = project_user.user.id
+          td = project_user.user.name
+          td = project_user.user.email
+          td = link_to "メンバー削除", "/projects/#{project_id}/project_users/#{user_id}",
+              method: 'delete',
+              class: 'button is-danger is-outlined is-pulled-right'
+
+- else
+  p メンバーがいません。

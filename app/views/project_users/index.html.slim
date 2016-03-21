@@ -1,14 +1,14 @@
 .section
   .container
+    a.button.is-glay[href=project_path(params[:project_id])]
+      | < 戻る
 
-    = link_to "戻る", project_path(params[:project_id])
+    h1.title メンバー編集
+    h2.subtitle メンバーの追加と削除
 
-    h1.title MemberList/Edit
-    h2.subtitle メンバーを追加したり、削除したりします
-
-    a.button.is-primary[href=new_project_project_user_path]
-      i.fa.fa-plus
-      | メンバー追加
-
+    .section
+      a.button.is-primary[href=new_project_project_user_path]
+        i.fa.fa-plus
+        | メンバー追加
 
     = render 'reject'

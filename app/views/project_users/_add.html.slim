@@ -1,5 +1,6 @@
 = form_tag project_project_users_path, method: 'post' do
 
-  .control.is-grouped
-    = email_field_tag :email
-    = submit_tag "追加", class: 'button is-primary'
+  .control
+    = email_field_tag :email,"" , class: 'input'
+
+  = submit_tag "追加", class: 'button is-primary'

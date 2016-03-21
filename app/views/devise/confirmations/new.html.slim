@@ -1,11 +1,16 @@
-h2
-  | Resend confirmation instructions
-= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-  .actions
-    = f.submit "Resend confirmation instructions"
-= render "devise/shared/links"
+.section
+  .container
+    h2.title
+      | 認証メールが届かない方へ
+    p.subtitle
+      | 登録時のメールアドレス宛に、認証メールを再送信することができます。
+
+    = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+      .control
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "input"
+      .actions
+        = f.submit "再送", class: "button is-primary"
+    = render "devise/shared/links"
