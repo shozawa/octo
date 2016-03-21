@@ -1,18 +1,19 @@
 = search_form_for(@q, url: project_documents_path, html: { method: :get }) do |f|
   .control
-    = f.label :name_cont, "ドキュメント名"
+    //= f.label :name_cont, "ドキュメント名"
     .control.is-grouped
-      = f.text_field :name_cont, class: 'input', placeholder: "ドキュメント名(部分一致)"
       .button.js-toggle-search-option
         | オプション
         i.fa.fa-angle-down
+      .control.has-icon
+        = f.text_field :name_cont, class: 'input', placeholder: "ドキュメント名(部分一致)"
+        i.fa.fa-search
+      = link_to 'クリア', url_for, class: 'button'
+      = f.submit '検索', class: 'button is-primary'
 
     .search-option
       .control
-        = f.date_select :created_at_gt, :class => 'select'
+        = f.date_select :created_at_gt, :class => 'select', :include_blank => true
         | から
-        = f.date_select :created_at_lt, :class => 'select'
+        = f.date_select :created_at_lt, :class => 'select', :include_blank => true
         | までに登録したもの
-
-  = f.submit '検索', class: 'button is-primary'
-  = link_to 'クリア', url_for, class: 'button'

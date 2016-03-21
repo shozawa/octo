@@ -6,6 +6,12 @@
   font-size: 14px
   background: #8A98AB
 
+.document-search
+  .control
+    margin-bottom: 0
+    &.has-icon
+      width: 100%
+
 .document-list
   .fa
     padding-right: 4px
@@ -17,5 +23,71 @@
 //show
 //#####
 .infinite-posts
-  height: 200px
+  height: 620px
   overflow: scroll
+
+.document-show
+  .container
+    max-width: 100%
+    width: 100%
+
+  .section
+    padding: 10px 10px 0 10px
+    background-color: $glay-200
+    .columns
+      > .column
+        padding: 32px
+      h2
+        line-height: 1.5em
+        .fa
+          font-size: 24px
+
+  .sidebar
+    background-color: #272D3C
+    .title
+      color: #fff
+    a
+      color: #fff
+
+  .version-form
+    margin-bottom: 32px
+
+  .comments
+    position: relative
+    height: calc(100vh - 152px)
+    .column
+      &:nth-of-type(2)
+        border-left: 2px solid $glay-200
+
+  .version-file-preview
+    img
+      max-width: 260px
+      max-height: 300px
+
+  .comment
+    border-radius: 4px
+    padding: 8px
+    background-color: $glay-200
+    width: 86%
+    .media-left
+      img
+        border-radius: 50%
+  .comment
+    &.myPost
+      background-color: rgb(249, 248, 203)
+      flex-direction: row-reverse
+      margin-left: 14%
+      .media-info
+        float: right
+        margin-right: 8px
+
+  .new_post_form
+    position: absolute
+    left: 2px
+    bottom: 16px
+    width: 100%
+    padding-top: 16px
+    padding-left: 16px
+    padding-right: 20px
+    border-top: 1px solid $glay-400
+    .post-form

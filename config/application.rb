@@ -23,7 +23,10 @@ module Octo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :ja  # 標準ロケールを日本語に
-
+    # 表示時のタイムゾーンをJSTに変更
+    config.time_zone = 'Tokyo'
+    # DB保存時のタイムゾーンをJSTに変更
+    config.active_record.default_timezone = :local
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
