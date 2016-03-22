@@ -40,7 +40,7 @@ class DocumentsController < ApplicationController
     def document_params
       params.require(:document).permit(
       :name,
-      versions_attributes: [:id, :attachment])
+      versions_attributes: [:id, :file])
     end
 
     def is_member?
