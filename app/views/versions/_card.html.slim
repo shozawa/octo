@@ -1,15 +1,27 @@
-.card
-  .content
-    = content_tag :h3, version.updated_at.strftime("%Y年%m月%d日 %H時%M分")
-    = image_tag version.file.url
-    = link_to "ダウンロード", "/versions/#{version.id}/download"
-    .infinite-posts
-      .pagination
-        - if posts.size > 9
-          = link_to 'Loading...', version_posts_path(version), remote: true, rel: "next"
-      |  <div class="posts" id="
-      = "posts_for_version_#{version.id}"
-      | "> 
-      = render posts.reverse
+.box.comments
+  .columns
+    .column.is-5
+      p
+        span.margin-r-4px
+          |バージョン：
+          = version.version_no
+        span
+          | 投稿日
+          = version.updated_at.strftime("%Y年%m月%d日 %H時%M分")
+      .version-file-preview
+        = image_tag version.file.url
+      a.button[href="/versions/#{version.id}/download"]
+        .fa.fa-download
+        | ダウンロード
+    .column
+      .infinite-posts
+        .pagination
+          - if posts.size > 9
+            = link_to 'Loading...', version_posts_path(version), remote: true, rel: "next"
+        |  <div class="posts" id="
+        = "posts_for_version_#{version.id}"
+        | ">
+        = render posts.reverse
+
 .new_post_form
   = render partial: 'posts/form', locals: { post: version.posts.build, version: version }

@@ -1,27 +1,41 @@
-h1
-  = @document.name
-= link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project)
-#new_version_form
-  = render partial: 'versions/form', locals: { document: @document }
-.columns
-  h2
-    | ドキュメント
-  .column.is-quarter
-    #left-side-nav
-      ul
-        - @document.project.documents.each do |document|
-          li
-            = link_to document.name, document_path(document)
-  .column
-    h2
-      | バージョン
-    ul
-      - @versions.each do |version|
-        - next unless version.persisted?
-        li
-          = link_to version.updated_at, version_path(version), remote: true, class: "document-select"
-  .column
-    h2
-      | コメント
-    #results-posts
-      = render partial: 'versions/card', locals: { version: @document.versions.first, posts: @document.posts.per_page_kaminari(1) }
+.document-show
+  .container
+
+    / .navbar
+    /   h2.is-text-centered
+    /     = @document.name
+
+    .section
+      .columns
+        .column.is-2.sidebar
+          h2.title.is-5
+            .fa.fa-file-text-o
+            | ドキュメントリスト
+          #left-side-nav
+            ul.list
+              li.list-item
+                = link_to "ドキュメント一覧へ戻る", project_documents_path(@document.project)
+            ul.list
+              - @document.project.documents.each do |document|
+                li.list-item.linked-item
+                  = link_to document.name, document_path(document)
+        .column.is-3
+          h2.title.is-5
+            .fa.fa-clock-o
+            = @document.name
+            | ：バージョン
+
+          #new_version_form.box
+            = render partial: 'versions/form', locals: { document: @document }
+
+            table.table
+              - @versions.each do |version|
+                - next unless version.persisted?
+                tr
+                  td = link_to version.updated_at.strftime("%Y年%m月%d日 %H時%M分%S秒"), version_path(version), remote: true, class: "document-select"
+        .column
+          h2.title.is-5
+            .fa.fa-comments-o
+            | コメント
+          #results-posts
+            = render partial: 'versions/card', locals: { version: @document.versions.first, posts: @document.posts.per_page_kaminari(1) }

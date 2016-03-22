@@ -1,12 +1,24 @@
 .section
   .container
     h1.title
-      |User Profile
-      = link_to "edit", edit_user_registration_path, class: 'button'
-    p.subtilte
-      = @user.name
-      | のページ
-      = image_tag @user.avatar.url, width: "40px"
+      |プロフィール
+      = link_to "編集", edit_user_registration_path, class: 'button'
 
-    .section
-      | アイコン、所属projectなどが出るといい
+    p.subtilte
+
+    table.table
+      tr
+        td.table-width-20 名前
+        td = @user.name
+      tr
+        td Eメール
+        td = @user.email
+      tr
+        td アイコン画像
+        td = image_tag @user.avatar.url, width: "40px"
+      tr
+        td 参加中のプロジェクト
+        td
+          - @user.projects.each do |project|
+            p.subtitle
+              = link_to project.name, project_path(project)

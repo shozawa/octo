@@ -1,5 +1,13 @@
-= form_for [@project, @document] do |f|
-  = f.text_field :name, placeholder: "ドキュメントの名前"
-  = f.fields_for :versions do |versions_form|
-    = versions_form.file_field :file
-  = f.submit "投稿"
+.section
+  .container
+    h2.title ドキュメントを新規作成
+
+    = form_for [@project, @document] do |f|
+      .control
+        = f.label :name, "名前"
+        = f.text_field :name, placeholder: "ドキュメント名", class: "input"
+      .control
+        = f.label :versions, "最初のバージョン"
+        = f.fields_for :versions do |versions_form|
+          = versions_form.file_field :file, class: "input"
+      = f.submit "作成", class: "button is-primary"

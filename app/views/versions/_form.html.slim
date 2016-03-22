@@ -1,4 +1,6 @@
-= form_for document.versions.build do |f|
-  = hidden_field_tag :document_id, document.id
-  = f.file_field :file
-  = f.submit "新規バージョンを投稿"
+.version-form
+  = form_for document.versions.build do |f|
+    = hidden_field_tag :document_id, document.id
+    .control.is-grouped
+      = f.file_field :file, class: "input"
+      = f.submit "バージョンを投稿", class: "button is-primary"

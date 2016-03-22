@@ -13,5 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import "bulma";
- @import "bulma_override";
+ /*@import "bulma";
+ @import "bulma_override";*/
+ @import "common";
+ @import "documents";
