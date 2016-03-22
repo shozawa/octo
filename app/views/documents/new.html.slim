@@ -9,5 +9,5 @@
       .control
         = f.label :versions, "最初のバージョン"
         = f.fields_for :versions do |versions_form|
-          = versions_form.file_field :attachment, class: "input"
+          = versions_form.file_field :file, class: "input"
       = f.submit "作成", class: "button is-primary"
