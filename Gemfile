@@ -16,6 +16,7 @@ gem 'dotenv-rails'
 gem 'annotate'
 gem 'rails-i18n'
 gem 'ransack'
+gem 'jquery-turbolinks'
 
 #コンソール
 gem 'hirb'
