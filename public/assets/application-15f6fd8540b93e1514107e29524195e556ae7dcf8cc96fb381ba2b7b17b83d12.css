@@ -4944,6 +4944,236 @@ a.menu-block:hover {
   border-bottom-color: #1fc8db;
 }
 /*# sourceMappingURL=bulma.css.map */
+/* line 1, /Users/kyosuke/dev/octo/app/assets/stylesheets/bulma_override.sass */
+.notification.is-alert {
+  background: #ed6c63;
+  color: white;
+}
+
+/* line 5, /Users/kyosuke/dev/octo/app/assets/stylesheets/bulma_override.sass */
+.notification.is-notice {
+  background: #97cd76;
+  color: white;
+}
+
+/* line 10, /Users/kyosuke/dev/octo/app/assets/stylesheets/bulma_override.sass */
+.pagination .current {
+  border: 1px solid #d3d6db;
+  margin-bottom: 0;
+  padding: 5px 10px;
+  position: relative;
+  background-color: #d3d6db;
+}
+/* line 5, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+header.header.global-header .container {
+  max-width: 100%;
+  padding: 0 16px;
+}
+
+/* line 10, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.margin-r-4px {
+  margin-right: 4px;
+}
+
+/* line 13, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.table-width-20 {
+  width: 20%;
+}
+
+/* line 17, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.is-glay {
+  background: #e0e0e0;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 24, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.list-item {
+  position: relative;
+  padding: 0.5em 0 0.5em 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* line 30, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.list-item:hover {
+  background-color: #1A1E27;
+  cursor: pointer;
+}
+/* line 31, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.list-item:hover:before {
+  content: " ";
+  display: block;
+  background: #468ccc;
+  width: 6px;
+  height: 2.4em;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 43, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.list-item.linked-item {
+  padding: 0;
+}
+/* line 45, /Users/kyosuke/dev/octo/app/assets/stylesheets/common.sass */
+.list-item.linked-item > a {
+  display: inline-block;
+  width: 100%;
+  padding: 0.5em 0 0.5em 8px;
+}
+/* line 5, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.message-header {
+  font-size: 14px;
+  background: #8A98AB;
+}
+
+/* line 10, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-search .control {
+  margin-bottom: 0;
+}
+/* line 12, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-search .control.has-icon {
+  width: 100%;
+}
+
+/* line 16, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-list .fa {
+  padding-right: 4px;
+  color: #69707a;
+}
+
+/* line 20, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.search-option {
+  display: none;
+}
+
+/* line 25, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.infinite-posts {
+  height: 620px;
+  overflow: scroll;
+}
+
+/* line 30, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .container {
+  max-width: 100%;
+  width: 100%;
+}
+/* line 34, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .section {
+  padding: 10px 10px 0 10px;
+  background-color: #f5f7fa;
+}
+/* line 38, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .section .columns > .column {
+  padding: 32px;
+}
+/* line 40, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .section .columns h2 {
+  line-height: 1.5em;
+}
+/* line 42, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .section .columns h2 .fa {
+  font-size: 24px;
+}
+/* line 45, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .sidebar {
+  background-color: #272D3C;
+}
+/* line 47, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .sidebar .title {
+  color: #fff;
+}
+/* line 49, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .sidebar a {
+  color: #fff;
+}
+/* line 52, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .version-form {
+  margin-bottom: 32px;
+}
+/* line 55, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .comments {
+  position: relative;
+  height: calc(100vh - 152px);
+}
+/* line 59, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .comments .column:nth-of-type(2) {
+  border-left: 2px solid #f5f7fa;
+}
+/* line 63, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .version-file-preview img {
+  max-width: 260px;
+  max-height: 300px;
+}
+/* line 67, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .comment {
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #f5f7fa;
+  width: 86%;
+}
+/* line 73, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .comment .media-left img {
+  border-radius: 50%;
+}
+/* line 76, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .comment.myPost {
+  background-color: #f9f8cb;
+  flex-direction: row-reverse;
+  margin-left: 14%;
+}
+/* line 80, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .comment.myPost .media-info {
+  float: right;
+  margin-right: 8px;
+}
+/* line 84, /Users/kyosuke/dev/octo/app/assets/stylesheets/documents.sass */
+.document-show .new_post_form {
+  position: absolute;
+  left: 2px;
+  bottom: 16px;
+  width: 100%;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+/* line 5, /Users/kyosuke/dev/octo/app/assets/stylesheets/project_users.scss */
+.name {
+  padding: 12px 4px 8px 0;
+}
+
+/* line 9, /Users/kyosuke/dev/octo/app/assets/stylesheets/project_users.scss */
+.user_row {
+  padding: 10px 0;
+  vertical-align: middle;
+  border-bottom: 1px solid #ccc;
+}
+/* line 4, /Users/kyosuke/dev/octo/app/assets/stylesheets/projects.sass */
+.projects-list .card {
+  width: 32%;
+  float: left;
+  margin-left: 12px;
+  margin-bottom: 12px;
+}
+/* line 9, /Users/kyosuke/dev/octo/app/assets/stylesheets/projects.sass */
+.projects-list .project-name {
+  font-size: 22px;
+}
+/* line 11, /Users/kyosuke/dev/octo/app/assets/stylesheets/projects.sass */
+.projects-list .project-name a {
+  display: inline-block;
+  width: 100%;
+  color: #69707a;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* line 18, /Users/kyosuke/dev/octo/app/assets/stylesheets/projects.sass */
+.projects-list .project-name a:hover {
+  text-decoration: underline;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -4959,5 +5189,8 @@ a.menu-block:hover {
 
 
  */
+ /*@import "bulma";
+ @import "bulma_override";*/
 
- @import "bulma";
+ @import "common";
+ @import "documents";
