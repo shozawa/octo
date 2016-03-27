@@ -1,0 +1,7 @@
+p = @user.name + "様"
+p
+  | プロジェクトメンバーに追加されました
+  br
+  | こちらのURLからプロジェクト「#{@project.name}」にアクセスしてください。
+  br
+  = link_to "#{project_documents_url(@project)}", project_documents_url(@project)

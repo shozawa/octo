@@ -20,10 +20,14 @@ class ProjectUsersController < ApplicationController
       user = User.find_by(email: email)
       id = user.id
       project_id = params[:project_id]
+      project = Project.find_by(id: project_id)
       @project_user = ProjectUser.new(project_id: project_id, user_id: id)
       if @project_user.save
         flash[:success] = "メンバーに追加しました！"
         redirect_to project_project_users_path(project_id)
+
+        #メンバー追加メール送信
+        ProjectUserMailer.add_user(user,project).deliver_later
       else
         flash[:warning] = "失敗しました.すでにメンバーに含まれている可能性があります。"
         redirect_to project_project_users_path(params[:project_id])
@@ -38,12 +42,16 @@ class ProjectUsersController < ApplicationController
   end
 
   def destroy
-    logger.debug(params[:project_id])
     @project_user = ProjectUser.where(project_id: params[:project_id], user_id: params[:id])
     id = @project_user.pluck(:id)
     @project_user.destroy(id)
     redirect_to project_project_users_path
     flash[:alert] = "削除しました"
+
+    #メンバー除外メール送信
+    user = User.find(params[:id])
+    project = Project.find(params[:project_id])
+    ProjectUserMailer.reject_user(user,project).deliver_later
   end
 
   private
