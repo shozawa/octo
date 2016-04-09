@@ -1,31 +1,45 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        current_password: "現在のパスワード"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        remember_me: "ログインを記憶"
+        avatar: "ユーザーアイコン"
+    models:
+      user: "ユーザ"
   devise:
     failure:
-      invited: "You have a pending invitation, accept it to finish creating your account."
+      invited: 'アカウントを作成するには、保留中の招待を承認してください。'
     invitations:
-      send_instructions: "An invitation email has been sent to %{email}."
-      invitation_token_invalid: "The invitation token provided is not valid!"
-      updated: "Your password was set successfully. You are now signed in."
-      updated_not_active: "Your password was set successfully."
-      no_invitations_remaining: "No invitations remaining"
-      invitation_removed: "Your invitation was removed."
+      send_instructions: '招待メールが%{email}に送信されました。'
+      invitation_token_invalid: '招待コードが不正です。'
+      updated: 'パスワードが設定されました。今後は現在ログイン中のアカウントでログインできます。'
+      updated_not_active: 'パスワードが設定されました。'
+      no_invitations_remaining: 'これ以上招待できません。'
+      invitation_removed: '招待を取り消しました。'
       new:
-        header: "Send invitation"
-        submit_button: "Send an invitation"
+        header: '招待する'
+        submit_button: '招待メールを送る'
       edit:
-        header: "Set your password"
-        submit_button: "Set my password"
+        header: 'ユーザー登録'
+        submit_button: '登録'
     mailer:
       invitation_instructions:
-        subject: "Invitation instructions"
-        hello: "Hello %{email}"
-        someone_invited_you: "Someone has invited you to %{url}, you can accept it through the link below."
-        accept: "Accept invitation"
-        accept_until: "This invitation will be due in %{due_date}."
-        ignore: "If you don't want to accept the invitation, please ignore this email.<br />Your account won't be created until you access the link above and set your password."
+        subject: '【Octo】に招待されました。'
+        hello: 'こんにちは、%{email}さん'
+        someone_invited_you: '%{url}に招待されました。以下のリンクから承認できます。'
+        accept: 'Accept invitation'
+        accept: '招待を承認する'
+        accept_until: 'この招待は%{due_date}まで有効です。'
+        ignore: '招待を承認しない場合は、このメールを無視してください。<br />あなたのアカウントは上記のリンク先にアクセスしパスワードを設定するまでは作成されません。'
+
   time:
     formats:
       devise:
         mailer:
           invitation_instructions:
-            accept_until_format: "%B %d, %Y %I:%M %p"
+            accept_until_format: '%Y年%m月%d日%H時%M分'
