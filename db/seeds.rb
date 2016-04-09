@@ -1,3 +1,10 @@
+User.create!(name: "root",
+            email: "root@oct.org",
+            password: "password",
+            encrypted_password: "password",
+            confirmed_at: Time.zone.now)
+
+
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@octo.org"

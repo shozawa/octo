@@ -32,7 +32,9 @@
               - @versions.each do |version|
                 - next unless version.persisted?
                 tr
-                  td = link_to version.updated_at.strftime("%Y年%m月%d日 %H時%M分%S秒"), version_path(version), remote: true, class: "document-select"
+                  td = link_to version.updated_at.strftime("%Y年%m月%d日 %H時%M分"), version_path(version), remote: true, class: "document-select"                  
+                  - if version != @versions.first
+                    td =  link_to "削除", version_path(version), method: :delete, data: { confirm: '本当に削除しますか？' }                
         .column
           h2.title.is-5
             .fa.fa-comments-o

@@ -17,6 +17,13 @@ class VersionsController < ApplicationController
     end
   end
 
+  def destroy
+    version = Version.find_by(id: params[:id])
+    document = version.document
+    version.destroy
+    redirect_to document
+  end
+
   def download
     version = Version.find_by(id: params[:id])
     download_url = version.file.url
