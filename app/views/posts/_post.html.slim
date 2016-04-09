@@ -13,7 +13,8 @@ div[id="post-id-#{post.id}", class=comment_class ]
       small
         = post_day
     br
-    = post.content
+    p.content
+      = post.content
     .navbar
       .navbar-left
         - if owner_of? post
