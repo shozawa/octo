@@ -1,8 +1,16 @@
 var post = "<%= escape_javascript(render partial: 'post', locals: { post: @post }) %>";
 // var post = "<%= escape_javascript(content_tag :p, @post.user.name + @post.content) %>";
 //要修正
-console.log("投稿された");
+
 var avatar = "<%= escape_javascript(image_tag @post.user.avatar.url, width:30) %>";
 // var version_id = <%= @post.version_id %>;
 $(post).appendTo(".posts");
-$(".post_content").val("");
+$(".post_content").val("").blur();
+
+var posts = $("#results-posts")
+var height = posts.find(".infinite-posts").height();
+var scrollHeight = posts.find(".infinite-posts")[0].scrollHeight;
+
+posts.find(".infinite-posts").scrollTop(scrollHeight - height);
+console.log(scrollHeight - height);
+console.log("投稿された");
