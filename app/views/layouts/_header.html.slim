@@ -9,6 +9,7 @@ section.hero.is-primary.is-left.is-bold
         .header-right.header-menu
           - if user_signed_in?
             p.header-item = link_to "#{current_user.name}", current_user
+            p.header-item = link_to "招待", new_user_invitation_path, class: 'button is-info is-outlined is-inverted'
             p.header-item = link_to "Log out", destroy_user_session_path, method: "delete", :class => "button is-info is-outlined is-inverted"
 
           - else
