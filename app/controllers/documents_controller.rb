@@ -22,7 +22,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     @versions = @document.versions
     @post = Post.new
-    @project = Project.find_by(@document.project_id)
+    @project = Project.find_by(id: @document.project_id)
   end
 
   def create
