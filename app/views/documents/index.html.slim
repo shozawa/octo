@@ -30,3 +30,4 @@
                 td
                   i.fa.fa-file-text-o
                   = link_to document.name, document_path(document)
+                td = link_to '削除', document_path(document), method: :delete, data: { confirm: '本当に削除しますか？' }
