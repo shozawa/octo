@@ -4,12 +4,12 @@ class DocumentsController < ApplicationController
 
   def index
     @project = Project.find_by(id: params[:project_id])
-    #@documents = @project.documents
     @document = Document.new
     @document.versions.build
     @q = @project.documents.ransack(params[:q])
     @result = @q.result
-    @documents = @result.page(params[:page]).per(20)
+    @documents = @result.per_page_kaminari(params[:page]).per(20)
+    #@documents = @result.page(params[:page]).per(20)
   end
 
   def new
@@ -40,7 +40,7 @@ class DocumentsController < ApplicationController
     document = Document.find_by(id: params[:id])
     project = document.project
     document.destroy
-    redirect_to project_documents_path(project)    
+    redirect_to project_documents_path(project)
   end
 
   private
