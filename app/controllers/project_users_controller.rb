@@ -14,18 +14,16 @@ class ProjectUsersController < ApplicationController
   def create
     email = params[:email]
     user_exists = User.exists?(email: email)
+    project_id = params[:project_id]
+    project = Project.find_by(id: project_id)
 
     #ユーザーがいる場合
     if user_exists
       user = User.find_by(email: email)
-      id = user.id
-      project_id = params[:project_id]
-      project = Project.find_by(id: project_id)
-      @project_user = ProjectUser.new(project_id: project_id, user_id: id)
+      @project_user = ProjectUser.new(project_id: project_id, user_id: user.id)
       if @project_user.save
         flash[:success] = "メンバーに追加しました！"
         redirect_to project_project_users_path(project_id)
-
         #メンバー追加メール送信
         ProjectUserMailer.add_user(user,project).deliver_later
       else
@@ -35,8 +33,9 @@ class ProjectUsersController < ApplicationController
 
     #ユーザーがいない場合
     else
-      #今後の実装でユーザー招待をする
-      flash[:warning] = "指定したユーザーは登録されていません。"
+      @user = User.invite!({:name => email,:email => email}, current_user)
+      ProjectUser.create!(project_id: project_id, user_id: @user.id)
+      flash[:warning] = "#{email}さんは未登録ユーザーです。招待を送信しました。"
       redirect_to project_project_users_path(params[:project_id])
     end
   end
@@ -55,10 +54,6 @@ class ProjectUsersController < ApplicationController
   end
 
   private
-    # def project_user_params
-    #   params.require(:project_user).permit(:project_id, :user_id)
-    # end
-
     def is_member?
       id = current_user.id
       user = User.find(id)

@@ -6,7 +6,7 @@
       = devise_error_messages!
       - resource.class.invite_key_fields.each do |field|
         .control
-          = f.label "Eメール"
+          = f.label :email
           = f.text_field field, class: 'input'
       p
         = f.submit "招待を送信", :class => 'button is-primary'
