@@ -4,12 +4,12 @@ class DocumentsController < ApplicationController
 
   def index
     @project = Project.find_by(id: params[:project_id])
-    @documents = @project.documents
+    #@documents = @project.documents
     @document = Document.new
     @document.versions.build
-
     @q = @project.documents.ransack(params[:q])
-    @documents = @q.result.page(params[:page]).per(20)
+    @result = @q.result
+    @documents = @result.page(params[:page]).per(20)
   end
 
   def new
@@ -22,6 +22,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     @versions = @document.versions
     @post = Post.new
+    @project = Project.find_by(@document.project_id)
   end
 
   def create
