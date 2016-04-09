@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_action :owner?, only: [:edit, :destroy]
+
   def create
     @version = Version.find_by(id: params[:version_id])
     @post = @version.posts.build(post_params)
@@ -19,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     respond_to do |format|
       format.js {}
+      format.html { render text: @post.content }
     end
   end
 
@@ -52,5 +56,14 @@ class PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit([:content, :version_id])
+    end
+
+    def owner?
+      post = Post.find_by(id: params[:id])
+      if  current_user == post.user
+      else
+        ## todo : 本当はルートではなく404? 403?ページヘ飛ばしたい
+        redirect_to root_path
+      end
     end
 end

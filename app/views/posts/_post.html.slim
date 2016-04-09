@@ -16,7 +16,8 @@ div[id="post-id-#{post.id}", class=comment_class ]
     = post.content
     .navbar
       .navbar-left
-        = link_to edit_post_path(post), class: "edit navbar-item", remote: true do
-          i.fa.fa-pencil-square-o
-        = link_to post_path(post),class: "navbar-item", method: :delete, remote: true do
-          i.fa.fa-trash
+        - if owner_of? post
+          = link_to edit_post_path(post), class: "edit navbar-item", remote: true do
+            i.fa.fa-pencil-square-o
+          = link_to post_path(post),class: "navbar-item", method: :delete, remote: true do
+            i.fa.fa-trash        

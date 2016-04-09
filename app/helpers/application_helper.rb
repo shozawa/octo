@@ -5,4 +5,8 @@ module ApplicationHelper
     next_page = page.to_i + 1
     link_to "next", "#{url}?page=#{next_page}", remote: true, rel: 'next'
   end
+
+  def owner_of?(post)
+    current_user == post.user ? true : false
+  end
 end
