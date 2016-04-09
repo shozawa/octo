@@ -36,6 +36,13 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def destroy
+    document = Document.find_by(id: params[:id])
+    project = document.project
+    document.destroy
+    redirect_to project_documents_path(project)    
+  end
+
   private
 
     def document_params

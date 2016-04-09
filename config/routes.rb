@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :projects, only: [:index, :show, :create, :new, :destroy] do
-    resources :documents, only: [:index, :show, :create, :new], shallow: true
+    resources :documents, only: [:index, :show, :create, :new, :destroy], shallow: true
     resources :documents, only: [:index] do
       get '?page=:page', :action => :index, :on => :collection
     end
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:edit, :update]
 
-  resources :versions, only: [:create, :show] do
+  resources :versions, only: [:create, :show, :destroy] do
       resources :posts, only: [:create, :index, :update, :edit, :destroy], shallow: true
   end
 
