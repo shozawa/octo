@@ -33,7 +33,7 @@
 
   .section
     padding: 10px 10px 0 10px
-    background-color: $glay-200
+    background-color: $gray-200
     .columns
       > .column
         padding: 32px
@@ -46,8 +46,9 @@
     background-color: #272D3C
     .title
       color: #fff
-    a
-      color: #fff
+    li
+      a
+        color: #fff
 
   .version-form
     margin-bottom: 32px
@@ -55,9 +56,11 @@
   .comments
     position: relative
     height: calc(100vh - 152px)
+    @media screen and (max-width: 479px)
+      height: auto
     .column
       &:nth-of-type(2)
-        border-left: 2px solid $glay-200
+        border-left: 2px solid $gray-200
 
   .version-file-preview
     img
@@ -67,7 +70,7 @@
   .comment
     border-radius: 4px
     padding: 8px
-    background-color: $glay-200
+    background-color: $gray-200
     width: 86%
     .media-left
       img
@@ -89,4 +92,4 @@
     padding-top: 16px
     padding-left: 16px
     padding-right: 20px
-    border-top: 1px solid $glay-400
+    border-top: 1px solid $gray-400

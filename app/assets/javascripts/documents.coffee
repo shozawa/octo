@@ -5,7 +5,7 @@ $ ->
   #高さ調整
   height_adjust = ->
       body_height = $('body').height()
-      height = body_height - 340
+      height = body_height - 300
       $('.infinite-posts').height(height)
   height_adjust()
 
